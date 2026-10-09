@@ -1843,6 +1843,10 @@ PrefabInstance:
       propertyPath: targetWristBone
       value: 
       objectReference: {fileID: 819493772}
+    - target: {fileID: 127996988634282606, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: offsetRotation.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1857,7 +1861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1865,7 +1869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1877,7 +1881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
