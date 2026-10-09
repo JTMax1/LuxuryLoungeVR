@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/_Project/Scripts/Editor/WatchBuilder.cs" />
+    <Compile Include="Assets/_Project/Scripts/Editor/LoungeBuilder.cs" />
     <Compile Include="Assets/TutorialInfo/Editor/ReadmeEditor.cs" />
   </ItemGroup>
   <ItemGroup>
