@@ -412,5 +412,126 @@ namespace VRWatch.Editor
                 }
             }
         }
+
+        [MenuItem("VRWatch/Configure P1 to P3 (Audio, Passthrough, Chrono)", false, 12)]
+        public static void BuildP1ToP3Features()
+        {
+            GameObject watch = GameObject.Find("[WristWatch_Prototype]");
+            if (watch == null) return;
+
+            Material matMetal = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchMetal.mat");
+            Material matChrono = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchChronoHand.mat");
+
+            // 1. P1: WatchAudioController
+            WatchAudioController audioCtrl = watch.GetComponent<WatchAudioController>();
+            if (audioCtrl == null) audioCtrl = watch.AddComponent<WatchAudioController>();
+
+            // 2. P3: Pushers on watch body
+            Transform existingStart = watch.transform.Find("Pusher_StartStop");
+            if (existingStart != null) Undo.DestroyObjectImmediate(existingStart.gameObject);
+
+            Transform existingReset = watch.transform.Find("Pusher_Reset");
+            if (existingReset != null) Undo.DestroyObjectImmediate(existingReset.gameObject);
+
+            // 2 o'clock Pusher (Start / Stop)
+            GameObject pStart = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pStart.name = "Pusher_StartStop";
+            pStart.transform.SetParent(watch.transform, false);
+            pStart.transform.localPosition = new Vector3(0.019f, 0f, 0.011f);
+            pStart.transform.localRotation = Quaternion.Euler(0f, 30f, 90f);
+            pStart.transform.localScale = new Vector3(0.0035f, 0.0022f, 0.0035f);
+            var mrStart = pStart.GetComponent<MeshRenderer>();
+            if (mrStart != null && matMetal != null) mrStart.sharedMaterial = matMetal;
+            var colStart = pStart.GetComponent<Collider>();
+            if (colStart != null) colStart.isTrigger = true;
+            var intStart = pStart.AddComponent<PusherInteractable>();
+
+            // 4 o'clock Pusher (Reset)
+            GameObject pReset = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pReset.name = "Pusher_Reset";
+            pReset.transform.SetParent(watch.transform, false);
+            pReset.transform.localPosition = new Vector3(0.019f, 0f, -0.011f);
+            pReset.transform.localRotation = Quaternion.Euler(0f, -30f, 90f);
+            pReset.transform.localScale = new Vector3(0.0035f, 0.0022f, 0.0035f);
+            var mrReset = pReset.GetComponent<MeshRenderer>();
+            if (mrReset != null && matMetal != null) mrReset.sharedMaterial = matMetal;
+            var colReset = pReset.GetComponent<Collider>();
+            if (colReset != null) colReset.isTrigger = true;
+            var intReset = pReset.AddComponent<PusherInteractable>();
+
+            // Chronograph Second Hand under WatchFace
+            Transform face = watch.transform.Find("WatchFace");
+            if (face != null)
+            {
+                Transform existingChronoPivot = face.Find("ChronoSecondPivot");
+                if (existingChronoPivot != null) Undo.DestroyObjectImmediate(existingChronoPivot.gameObject);
+
+                GameObject chronoPivot = new GameObject("ChronoSecondPivot");
+                chronoPivot.transform.SetParent(face, false);
+                chronoPivot.transform.localPosition = new Vector3(0f, 0.0011f, 0f);
+                chronoPivot.transform.localRotation = Quaternion.identity;
+                chronoPivot.transform.localScale = Vector3.one;
+
+                GameObject chronoMesh = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                chronoMesh.name = "ChronoSecondHand_Mesh";
+                chronoMesh.transform.SetParent(chronoPivot.transform, false);
+                chronoMesh.transform.localPosition = new Vector3(0f, 0f, 0.0075f);
+                chronoMesh.transform.localRotation = Quaternion.identity;
+                chronoMesh.transform.localScale = new Vector3(0.0005f, 0.00025f, 0.018f);
+                var cCol = chronoMesh.GetComponent<Collider>();
+                if (cCol != null) Object.DestroyImmediate(cCol);
+                var mrChrono = chronoMesh.GetComponent<MeshRenderer>();
+                if (mrChrono != null && matChrono != null) mrChrono.sharedMaterial = matChrono;
+
+                // WatchChronographController
+                WatchChronographController chronoCtrl = watch.GetComponent<WatchChronographController>();
+                if (chronoCtrl == null) chronoCtrl = watch.AddComponent<WatchChronographController>();
+                chronoCtrl.SetReferences(chronoPivot.transform, pStart.transform, pReset.transform, audioCtrl);
+
+                intStart.AddListener(() => chronoCtrl.ToggleStartStop());
+                intReset.AddListener(() => chronoCtrl.ResetChronograph());
+
+                SerializedObject soChrono = new SerializedObject(chronoCtrl);
+                soChrono.FindProperty("chronoSecondHand").objectReferenceValue = chronoPivot.transform;
+                soChrono.FindProperty("pusherStartStop").objectReferenceValue = pStart.transform;
+                soChrono.FindProperty("pusherReset").objectReferenceValue = pReset.transform;
+                soChrono.FindProperty("audioController").objectReferenceValue = audioCtrl;
+                soChrono.ApplyModifiedProperties();
+            }
+
+            // 3. P2: LoungeModeManager
+            GameObject modeManagerGo = GameObject.Find("[ModeManager]");
+            if (modeManagerGo == null) modeManagerGo = new GameObject("[ModeManager]");
+            LoungeModeManager modeManager = modeManagerGo.GetComponent<LoungeModeManager>();
+            if (modeManager == null) modeManager = modeManagerGo.AddComponent<LoungeModeManager>();
+
+            // Add 3D Mode Toggle Plaque on DisplayPedestal
+            GameObject pedestal = GameObject.Find("DisplayPedestal");
+            if (pedestal != null)
+            {
+                Transform existingToggle = pedestal.transform.Find("Pedestal_ModeToggle");
+                if (existingToggle != null) Undo.DestroyObjectImmediate(existingToggle.gameObject);
+
+                GameObject toggleBtn = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                toggleBtn.name = "Pedestal_ModeToggle";
+                toggleBtn.transform.SetParent(pedestal.transform, false);
+                toggleBtn.transform.localPosition = new Vector3(0.24f, 0.94f, 0f);
+                toggleBtn.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+                toggleBtn.transform.localScale = new Vector3(0.035f, 0.012f, 0.035f);
+                var mrToggle = toggleBtn.GetComponent<MeshRenderer>();
+                if (mrToggle != null && matMetal != null) mrToggle.sharedMaterial = matMetal;
+                var colToggle = toggleBtn.GetComponent<Collider>();
+                if (colToggle != null) colToggle.isTrigger = true;
+                var intToggle = toggleBtn.AddComponent<PusherInteractable>();
+                intToggle.AddListener(() => modeManager.ToggleMode());
+            }
+
+            string prefabPath = "Assets/_Project/Prefabs/WristWatch_Prototype.prefab";
+            PrefabUtility.SaveAsPrefabAssetAndConnect(watch, prefabPath, InteractionMode.AutomatedAction);
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+            EditorSceneManager.SaveOpenScenes();
+            Debug.Log("[LoungeBuilder] P1, P2, and P3 configured and saved.");
+        }
     }
 }

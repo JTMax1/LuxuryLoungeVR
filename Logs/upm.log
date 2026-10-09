@@ -2809,3 +2809,331 @@ params: {
 [2026-10-09T22:49:12.016Z][INFO] packages:get-packageinfo --> 200 (34 ms)
 [2026-10-09T22:49:16.206Z][INFO] project:list-packages --> 200 (5140 ms)
 [2026-10-09T22:49:16.208Z][INFO] project:list-packages --> 200 (4987 ms)
+[2026-10-09T22:54:37.783Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:38.197Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:42.782Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:42.966Z][INFO] project:list-packages --> 200 (5185 ms)
+[2026-10-09T22:54:42.967Z][INFO] project:list-packages --> 200 (4770 ms)
+[2026-10-09T22:54:42.967Z][INFO] project:list-packages --> 200 (185 ms)
+[2026-10-09T22:54:43.199Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:43.286Z][INFO] project:list-packages --> 200 (87 ms)
+[2026-10-09T22:54:44.856Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:44.940Z][INFO] project:list-packages --> 200 (84 ms)
+[2026-10-09T22:54:46.788Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T22:54:46.890Z][INFO] project:list-packages --> 200 (103 ms)
+[2026-10-09T23:05:23.536Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:23.601Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:23.723Z][INFO] project:list-packages --> 200 (189 ms)
+[2026-10-09T23:05:23.736Z][INFO] project:list-packages --> 200 (135 ms)
+[2026-10-09T23:05:23.779Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:23.848Z][INFO] project:list-packages --> 200 (69 ms)
+[2026-10-09T23:05:24.208Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:24.299Z][INFO] project:list-packages --> 200 (91 ms)
+[2026-10-09T23:05:24.869Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:24.937Z][INFO] project:list-packages --> 200 (68 ms)
+[2026-10-09T23:05:25.014Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:05:25.015Z][INFO] config:project:get-registries --> 200 (1 ms)
+[2026-10-09T23:05:25.351Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:25.363Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:05:25.375Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:25.491Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:25.607Z][INFO] packages:get-all-packageinfo --> 200 (244 ms)
+[2026-10-09T23:05:25.703Z][INFO] project:list-packages --> 200 (328 ms)
+[2026-10-09T23:05:26.273Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:05:27.021Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:27.521Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:05:27.904Z][INFO] packages:get-packageinfo --> 200 (1631 ms)
+[2026-10-09T23:05:32.273Z][INFO] project:list-packages --> 200 (5252 ms)
+[2026-10-09T23:05:32.275Z][INFO] project:list-packages --> 200 (6924 ms)
+[2026-10-09T23:05:32.275Z][INFO] project:list-packages --> 200 (6784 ms)
+[2026-10-09T23:05:32.275Z][INFO] project:list-packages --> 200 (4754 ms)
+[2026-10-09T23:06:32.819Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:32.884Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:32.926Z][INFO] project:list-packages --> 200 (108 ms)
+[2026-10-09T23:06:32.984Z][INFO] project:list-packages --> 200 (100 ms)
+[2026-10-09T23:06:33.050Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:33.118Z][INFO] project:list-packages --> 200 (69 ms)
+[2026-10-09T23:06:33.421Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:33.516Z][INFO] project:list-packages --> 200 (95 ms)
+[2026-10-09T23:06:33.847Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:33.957Z][INFO] project:list-packages --> 200 (110 ms)
+[2026-10-09T23:06:34.002Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:06:34.004Z][INFO] config:project:get-registries --> 200 (2 ms)
+[2026-10-09T23:06:34.304Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:34.315Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:06:34.326Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:34.416Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:34.510Z][INFO] packages:get-all-packageinfo --> 200 (195 ms)
+[2026-10-09T23:06:34.597Z][INFO] project:list-packages --> 200 (271 ms)
+[2026-10-09T23:06:35.219Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:06:35.287Z][INFO] packages:get-packageinfo --> 200 (68 ms)
+[2026-10-09T23:06:36.144Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:37.242Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:39.483Z][INFO] project:list-packages --> 200 (5067 ms)
+[2026-10-09T23:06:39.484Z][INFO] project:list-packages --> 200 (5180 ms)
+[2026-10-09T23:06:39.484Z][INFO] project:list-packages --> 200 (3341 ms)
+[2026-10-09T23:06:39.484Z][INFO] project:list-packages --> 200 (2242 ms)
+[2026-10-09T23:06:39.778Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:39.801Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:39.891Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:39.928Z][INFO] project:list-packages --> 200 (149 ms)
+[2026-10-09T23:06:39.986Z][INFO] project:list-packages --> 200 (185 ms)
+[2026-10-09T23:06:40.075Z][INFO] project:list-packages --> 200 (184 ms)
+[2026-10-09T23:06:40.098Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:40.170Z][INFO] project:list-packages --> 200 (72 ms)
+[2026-10-09T23:06:41.080Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:41.168Z][INFO] project:list-packages --> 200 (88 ms)
+[2026-10-09T23:06:41.493Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:41.574Z][INFO] project:list-packages --> 200 (81 ms)
+[2026-10-09T23:06:41.650Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:06:41.652Z][INFO] config:project:get-registries --> 200 (3 ms)
+[2026-10-09T23:06:41.963Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:41.974Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:06:41.988Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:42.108Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:42.239Z][INFO] packages:get-all-packageinfo --> 200 (265 ms)
+[2026-10-09T23:06:42.403Z][INFO] project:list-packages --> 200 (440 ms)
+[2026-10-09T23:06:42.495Z][INFO] project:list-packages --> 200 (507 ms)
+[2026-10-09T23:06:42.496Z][INFO] project:list-packages --> 200 (388 ms)
+[2026-10-09T23:06:42.935Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:06:42.941Z][INFO] packages:get-packageinfo --> 200 (6 ms)
+[2026-10-09T23:06:44.573Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:44.793Z][INFO] project:list-packages --> 200 (220 ms)
+[2026-10-09T23:06:44.794Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:44.886Z][INFO] project:list-packages --> 200 (92 ms)
+[2026-10-09T23:06:46.904Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:46.916Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:46.981Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:47.057Z][INFO] project:list-packages --> 200 (153 ms)
+[2026-10-09T23:06:47.069Z][INFO] project:list-packages --> 200 (153 ms)
+[2026-10-09T23:06:47.118Z][INFO] project:list-packages --> 200 (137 ms)
+[2026-10-09T23:06:47.147Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:47.206Z][INFO] project:list-packages --> 200 (59 ms)
+[2026-10-09T23:06:47.734Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:47.821Z][INFO] project:list-packages --> 200 (87 ms)
+[2026-10-09T23:06:48.114Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:48.189Z][INFO] project:list-packages --> 200 (75 ms)
+[2026-10-09T23:06:48.270Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:06:48.271Z][INFO] config:project:get-registries --> 200 (1 ms)
+[2026-10-09T23:06:48.575Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:48.586Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:06:48.599Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:48.703Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:48.787Z][INFO] packages:get-all-packageinfo --> 200 (201 ms)
+[2026-10-09T23:06:48.891Z][INFO] project:list-packages --> 200 (316 ms)
+[2026-10-09T23:06:48.974Z][INFO] project:list-packages --> 200 (375 ms)
+[2026-10-09T23:06:48.998Z][INFO] project:list-packages --> 200 (295 ms)
+[2026-10-09T23:06:49.502Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:06:49.509Z][INFO] packages:get-packageinfo --> 200 (7 ms)
+[2026-10-09T23:06:50.531Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:50.624Z][INFO] project:list-packages --> 200 (93 ms)
+[2026-10-09T23:06:51.120Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:06:51.238Z][INFO] project:list-packages --> 200 (118 ms)
+[2026-10-09T23:08:43.824Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:43.914Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:43.929Z][INFO] project:list-packages --> 200 (106 ms)
+[2026-10-09T23:08:44.000Z][INFO] project:list-packages --> 200 (85 ms)
+[2026-10-09T23:08:44.077Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:44.144Z][INFO] project:list-packages --> 200 (67 ms)
+[2026-10-09T23:08:44.393Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:44.497Z][INFO] project:list-packages --> 200 (104 ms)
+[2026-10-09T23:08:44.828Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:44.895Z][INFO] project:list-packages --> 200 (67 ms)
+[2026-10-09T23:08:44.983Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:08:44.985Z][INFO] config:project:get-registries --> 200 (2 ms)
+[2026-10-09T23:08:45.290Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:45.301Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:08:45.312Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:45.415Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:45.532Z][INFO] packages:get-all-packageinfo --> 200 (231 ms)
+[2026-10-09T23:08:45.613Z][INFO] project:list-packages --> 200 (301 ms)
+[2026-10-09T23:08:46.248Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:08:46.257Z][INFO] packages:get-packageinfo --> 200 (9 ms)
+[2026-10-09T23:08:50.989Z][INFO] project:list-packages --> 200 (5699 ms)
+[2026-10-09T23:08:50.990Z][INFO] project:list-packages --> 200 (5575 ms)
+[2026-10-09T23:08:52.620Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:52.692Z][INFO] project:list-packages --> 200 (72 ms)
+[2026-10-09T23:08:52.698Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:52.785Z][INFO] project:list-packages --> 200 (87 ms)
+[2026-10-09T23:08:52.866Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:52.923Z][INFO] project:list-packages --> 200 (57 ms)
+[2026-10-09T23:08:53.192Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:53.281Z][INFO] project:list-packages --> 200 (89 ms)
+[2026-10-09T23:08:53.595Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:53.663Z][INFO] project:list-packages --> 200 (68 ms)
+[2026-10-09T23:08:53.740Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:08:53.746Z][INFO] config:project:get-registries --> 200 (6 ms)
+[2026-10-09T23:08:54.044Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:54.054Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:08:54.066Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:54.422Z][INFO] packages:get-all-packageinfo --> 200 (368 ms)
+[2026-10-09T23:08:54.516Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:54.552Z][INFO] project:list-packages --> 200 (509 ms)
+[2026-10-09T23:08:54.611Z][INFO] project:list-packages --> 200 (545 ms)
+[2026-10-09T23:08:54.693Z][INFO] project:list-packages --> 200 (177 ms)
+[2026-10-09T23:08:55.290Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:08:55.297Z][INFO] packages:get-packageinfo --> 200 (7 ms)
+[2026-10-09T23:08:59.228Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:59.314Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:59.342Z][INFO] project:list-packages --> 200 (114 ms)
+[2026-10-09T23:08:59.398Z][INFO] project:list-packages --> 200 (84 ms)
+[2026-10-09T23:08:59.461Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:59.526Z][INFO] project:list-packages --> 200 (65 ms)
+[2026-10-09T23:08:59.842Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:08:59.952Z][INFO] project:list-packages --> 200 (109 ms)
+[2026-10-09T23:09:00.265Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:00.362Z][INFO] project:list-packages --> 200 (97 ms)
+[2026-10-09T23:09:00.421Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:09:00.423Z][INFO] config:project:get-registries --> 200 (2 ms)
+[2026-10-09T23:09:00.736Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:00.748Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:09:00.759Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:00.864Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:01.011Z][INFO] packages:get-all-packageinfo --> 200 (263 ms)
+[2026-10-09T23:09:01.136Z][INFO] project:list-packages --> 200 (400 ms)
+[2026-10-09T23:09:01.211Z][INFO] project:list-packages --> 200 (452 ms)
+[2026-10-09T23:09:01.229Z][INFO] project:list-packages --> 200 (365 ms)
+[2026-10-09T23:09:01.640Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:09:01.646Z][INFO] packages:get-packageinfo --> 200 (6 ms)
+[2026-10-09T23:09:05.724Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:05.797Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:05.817Z][INFO] project:list-packages --> 200 (93 ms)
+[2026-10-09T23:09:05.894Z][INFO] project:list-packages --> 200 (97 ms)
+[2026-10-09T23:09:05.956Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:06.021Z][INFO] project:list-packages --> 200 (65 ms)
+[2026-10-09T23:09:06.269Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:06.362Z][INFO] project:list-packages --> 200 (93 ms)
+[2026-10-09T23:09:06.671Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:06.735Z][INFO] project:list-packages --> 200 (64 ms)
+[2026-10-09T23:09:06.827Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-10-09T23:09:06.828Z][INFO] config:project:get-registries --> 200 (1 ms)
+[2026-10-09T23:09:07.129Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:07.139Z][INFO] packages:get-all-packageinfo <-- Request received
+params: {}
+[2026-10-09T23:09:07.152Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:07.255Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T23:09:07.351Z][INFO] packages:get-all-packageinfo --> 200 (212 ms)
+[2026-10-09T23:09:07.481Z][INFO] project:list-packages --> 200 (352 ms)
+[2026-10-09T23:09:07.536Z][INFO] project:list-packages --> 200 (384 ms)
+[2026-10-09T23:09:07.553Z][INFO] project:list-packages --> 200 (298 ms)
+[2026-10-09T23:09:08.043Z][INFO] packages:get-packageinfo <-- Request received
+params: {
+  "packageId": "com.unity.ai.assistant"
+}
+[2026-10-09T23:09:08.050Z][INFO] packages:get-packageinfo --> 200 (7 ms)

@@ -57,9 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/_Project/Scripts/Interaction/WristTwistStabilizer.cs" />
+    <Compile Include="Assets/_Project/Scripts/Interaction/LoungeModeManager.cs" />
+    <Compile Include="Assets/_Project/Scripts/Interaction/PusherInteractable.cs" />
     <Compile Include="Assets/_Project/Scripts/Interaction/WristAnchorFollower.cs" />
     <Compile Include="Assets/TutorialInfo/Readme.cs" />
+    <Compile Include="Assets/_Project/Scripts/Core/WatchAudioController.cs" />
     <Compile Include="Assets/_Project/Scripts/Core/AnalogClockController.cs" />
+    <Compile Include="Assets/_Project/Scripts/Core/WatchChronographController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TutorialInfo/StyleSheets/ReadmeEditor.uss" />
