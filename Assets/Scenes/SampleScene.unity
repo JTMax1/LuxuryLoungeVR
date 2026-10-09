@@ -1831,6 +1831,67 @@ Transform:
   - {fileID: 213964824}
   m_Father: {fileID: 1460009158}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5586946735717619474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 127996988634282606, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: targetWristBone
+      value: 
+      objectReference: {fileID: 819493772}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861014176105565713, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: m_Name
+      value: '[WristWatch_Prototype]'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1840,3 +1901,4 @@ SceneRoots:
   - {fileID: 1460009158}
   - {fileID: 1755544482}
   - {fileID: 1038836510}
+  - {fileID: 5586946735717619474}
