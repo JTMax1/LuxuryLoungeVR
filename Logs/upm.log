@@ -1976,3 +1976,21 @@ params: {
 [2026-10-09T20:38:01.972Z][INFO] packages:get-packageinfo --> 200 (229 ms)
 [2026-10-09T20:38:06.483Z][INFO] project:list-packages --> 200 (5557 ms)
 [2026-10-09T20:38:06.484Z][INFO] project:list-packages --> 200 (5693 ms)
+[2026-10-09T20:55:30.833Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:31.352Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:35.926Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:36.632Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:37.370Z][INFO] project:list-packages --> 200 (6542 ms)
+[2026-10-09T20:55:37.372Z][INFO] project:list-packages --> 200 (6021 ms)
+[2026-10-09T20:55:37.372Z][INFO] project:list-packages --> 200 (740 ms)
+[2026-10-09T20:55:37.372Z][INFO] project:list-packages --> 200 (1447 ms)
+[2026-10-09T20:55:37.783Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:37.902Z][INFO] project:list-packages --> 200 (119 ms)
+[2026-10-09T20:55:38.384Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-10-09T20:55:38.492Z][INFO] project:list-packages --> 200 (108 ms)

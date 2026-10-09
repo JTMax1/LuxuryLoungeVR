@@ -115493,3 +115493,343 @@ Prepare: number of updated asset objects reloaded= 0
 Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
 EnvironmentDependencyValues requested are different than current active one (requested -> active):
   graphicsApiMask: 2099200 -> 2164736
+sh: /Applications/Meta: No such file or directory
+sh: /Applications/Meta: No such file or directory
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.75 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (34.7 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 40.842292 ms (FindLiveObjects: 1.229708 ms CreateObjectMapping: 0.629625 ms MarkObjects: 32.433500 ms  DeleteObjects: 5.933417 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.69 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.0 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 38.238417 ms (FindLiveObjects: 1.358750 ms CreateObjectMapping: 0.309208 ms MarkObjects: 29.274375 ms  DeleteObjects: 6.610458 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.37 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.6 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 21.501916 ms (FindLiveObjects: 0.796709 ms CreateObjectMapping: 0.159375 ms MarkObjects: 16.440583 ms  DeleteObjects: 3.706042 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.91 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.0 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 42.467875 ms (FindLiveObjects: 1.997292 ms CreateObjectMapping: 0.442167 ms MarkObjects: 32.462292 ms  DeleteObjects: 6.918125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 6.27 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 2.37 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.3 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 25.973250 ms (FindLiveObjects: 0.740250 ms CreateObjectMapping: 0.237042 ms MarkObjects: 15.377500 ms  DeleteObjects: 9.251833 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.33 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (35.0 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 40.079375 ms (FindLiveObjects: 1.196583 ms CreateObjectMapping: 0.305416 ms MarkObjects: 28.627000 ms  DeleteObjects: 9.310250 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.54 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (35.0 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 21.795292 ms (FindLiveObjects: 0.753959 ms CreateObjectMapping: 0.258125 ms MarkObjects: 16.287625 ms  DeleteObjects: 4.124125 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 8.36 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 2.82 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (33.0 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 58.420917 ms (FindLiveObjects: 1.449500 ms CreateObjectMapping: 0.352417 ms MarkObjects: 51.321833 ms  DeleteObjects: 4.662166 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 7.00 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (35.8 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.77 GB to 0.73 GB.
+Total: 20.046333 ms (FindLiveObjects: 0.814583 ms CreateObjectMapping: 0.199333 ms MarkObjects: 14.355584 ms  DeleteObjects: 4.311167 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.09 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (31.8 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.76 GB to 0.73 GB.
+Total: 54.974792 ms (FindLiveObjects: 4.478375 ms CreateObjectMapping: 0.842417 ms MarkObjects: 42.104833 ms  DeleteObjects: 6.913834 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 14.18 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 3.02 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (31.8 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.76 GB to 0.73 GB.
+Total: 42.269208 ms (FindLiveObjects: 1.612458 ms CreateObjectMapping: 0.553667 ms MarkObjects: 28.580292 ms  DeleteObjects: 10.758625 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 9.33 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 3.24 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (31.8 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.76 GB to 0.73 GB.
+Total: 42.546791 ms (FindLiveObjects: 2.016542 ms CreateObjectMapping: 0.625583 ms MarkObjects: 33.713708 ms  DeleteObjects: 5.324542 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.16 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.2 MB). Loaded Objects now: 15945.
+Memory consumption went from 0.76 GB to 0.73 GB.
+Total: 18.281625 ms (FindLiveObjects: 0.694833 ms CreateObjectMapping: 0.214209 ms MarkObjects: 13.309875 ms  DeleteObjects: 3.696500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Import Request.
+  Time of request: 2026-10-09T21:06:35.910227Z
+  Time since last request: 1739.98196824999991 seconds.
+  importAddress: GUID: 90f9ee702b4ec41219241fc67414bfcc - Path: Assets/_Project/Prefabs/WristWatch_Prototype.prefab - Importer: PreviewImporter
+Importing 'GUID: 90f9ee702b4ec41219241fc67414bfcc - Path: Assets/_Project/Prefabs/WristWatch_Prototype.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 90f9ee702b4ec41219241fc67414bfcc' -> (Import Result ID: '532953b1bc3038cd14bc580f56738294') in 0.624 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fe9e8f0dbb58cdc420106196ef5c3acd DependenciesID=4beddcad0aff62e6332b5cfd368ac9fa StaticDependenciesID=e9b6875af10a09da56823db5df13b5e3 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 121
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.14 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.2 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 39.272250 ms (FindLiveObjects: 1.419000 ms CreateObjectMapping: 0.278375 ms MarkObjects: 32.228750 ms  DeleteObjects: 4.767875 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.98 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (36.2 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 49.810875 ms (FindLiveObjects: 1.482417 ms CreateObjectMapping: 1.156250 ms MarkObjects: 38.728250 ms  DeleteObjects: 7.690792 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.24 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (32.8 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 50.580125 ms (FindLiveObjects: 1.986042 ms CreateObjectMapping: 1.050708 ms MarkObjects: 41.806375 ms  DeleteObjects: 5.150208 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 16.51 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (33.2 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 28.782916 ms (FindLiveObjects: 0.778750 ms CreateObjectMapping: 0.178833 ms MarkObjects: 21.330084 ms  DeleteObjects: 5.719916 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 6.65 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 2.06 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (33.1 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 49.569041 ms (FindLiveObjects: 2.293125 ms CreateObjectMapping: 0.488916 ms MarkObjects: 39.226917 ms  DeleteObjects: 6.954917 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 6.80 ms, found 20 plugins.
+Preloading 3 native plugins for Editor in 3.21 ms.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (35.2 MB). Loaded Objects now: 16057.
+Memory consumption went from 0.77 GB to 0.74 GB.
+Total: 44.818292 ms (FindLiveObjects: 0.779709 ms CreateObjectMapping: 0.389459 ms MarkObjects: 15.065333 ms  DeleteObjects: 27.198500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
