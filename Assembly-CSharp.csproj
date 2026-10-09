@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets/_Project/Scripts/Interaction/WristTwistStabilizer.cs" />
     <Compile Include="Assets/_Project/Scripts/Interaction/LoungeModeManager.cs" />
+    <Compile Include="Assets/_Project/Scripts/Core/WatchLumeController.cs" />
+    <Compile Include="Assets/_Project/Scripts/Core/WatchCatalogManager.cs" />
     <Compile Include="Assets/_Project/Scripts/Interaction/PusherInteractable.cs" />
     <Compile Include="Assets/_Project/Scripts/Interaction/WristAnchorFollower.cs" />
     <Compile Include="Assets/TutorialInfo/Readme.cs" />

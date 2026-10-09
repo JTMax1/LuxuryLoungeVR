@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -876,7 +876,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -966,7 +966,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1277,7 +1277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1489,7 +1489,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1579,7 +1579,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1881,7 +1881,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1920,6 +1920,8 @@ GameObject:
   - component: {fileID: 4482482117849651189}
   - component: {fileID: 1521793262383133342}
   - component: {fileID: 5804307616123353437}
+  - component: {fileID: 4092050681244082463}
+  - component: {fileID: 1163955894799577691}
   m_Layer: 0
   m_Name: WristWatch_Prototype
   m_TagString: Untagged
@@ -2140,6 +2142,63 @@ MonoBehaviour:
   pusherReset: {fileID: 6263715102353893463}
   audioController: {fileID: 1521793262383133342}
   rotationAxis: {x: 0, y: 1, z: 0}
+--- !u!114 &4092050681244082463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861014176105565713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85c91d93586d4f36b9abf61b28bdabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRWatch.Core.WatchCatalogManager
+  activeWatchRoot: {fileID: 0}
+  catalogPresets:
+  - modelName: Classic Steel Chronograph
+    caseMaterial: {fileID: 2100000, guid: c1269d71e68414aae98f11696d94f51b, type: 2}
+    dialMaterial: {fileID: 2100000, guid: 44edc4b1237ea45e3aa13fe5b2225d90, type: 2}
+    handsMaterial: {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+    chronoHandMaterial: {fileID: 2100000, guid: 603e1160fadcf40dca1ee926bd8ca0ca, type: 2}
+    strapMaterial: {fileID: 2100000, guid: 9b5382dd43f944467abfb8ade63a1543, type: 2}
+    markersMaterial: {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
+  - modelName: Rose Gold Royal Heritage
+    caseMaterial: {fileID: 2100000, guid: 5b0753a808da241ac98079018852fe13, type: 2}
+    dialMaterial: {fileID: 2100000, guid: 6fb260334c8424b2b97b5a2b3d15ec33, type: 2}
+    handsMaterial: {fileID: 2100000, guid: 5b0753a808da241ac98079018852fe13, type: 2}
+    chronoHandMaterial: {fileID: 2100000, guid: 603e1160fadcf40dca1ee926bd8ca0ca, type: 2}
+    strapMaterial: {fileID: 2100000, guid: 608a72802324a4b6ab7a2eb6f056ca0e, type: 2}
+    markersMaterial: {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
+  - modelName: Titanium Stealth Diver
+    caseMaterial: {fileID: 2100000, guid: 7b181a2f02b664ca7b36afe480d1b6e1, type: 2}
+    dialMaterial: {fileID: 2100000, guid: 0560bdf4eb36e4909b6561dfc5b7cdb0, type: 2}
+    handsMaterial: {fileID: 2100000, guid: 19cbae3d9c739425787ca934157f00e2, type: 2}
+    chronoHandMaterial: {fileID: 2100000, guid: 603e1160fadcf40dca1ee926bd8ca0ca, type: 2}
+    strapMaterial: {fileID: 2100000, guid: a6988c910ec524642afebcb347262aef, type: 2}
+    markersMaterial: {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
+  activePresetIndex: 0
+  audioSource: {fileID: 0}
+--- !u!114 &1163955894799577691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861014176105565713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5676afea56541459d8bc9c2f7d9e266c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRWatch.Core.WatchLumeController
+  isNightMode: 0
+  transitionSpeed: 2.5
+  lumeMaterial: {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
+  dayEmission: {r: 0, g: 0, b: 0, a: 1}
+  nightEmission: {r: 0.76, g: 3.8, b: 2.85, a: 3.8}
+  directionalKeyLight: {fileID: 0}
+  pedestalSpotlight: {fileID: 0}
+  fillLights: []
 --- !u!1 &7188586120325454968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,7 +2265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2418,7 +2477,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2508,7 +2567,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2810,7 +2869,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2900,7 +2959,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2610929e53f914d7faf7c2d58fdd1fa7, type: 2}
+  - {fileID: 2100000, guid: 163731ac8fbe3442e844ae59323915b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

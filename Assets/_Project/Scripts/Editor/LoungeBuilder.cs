@@ -533,5 +533,175 @@ namespace VRWatch.Editor
             EditorSceneManager.SaveOpenScenes();
             Debug.Log("[LoungeBuilder] P1, P2, and P3 configured and saved.");
         }
+
+        [MenuItem("VRWatch/Configure P4 & P5 (VIP Catalog, Super-LumiNova)", false, 13)]
+        public static void BuildP4AndP5Features()
+        {
+            GameObject watch = GameObject.Find("[WristWatch_Prototype]");
+            if (watch == null) return;
+
+            // Load Materials
+            Material matSteel = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchMetal.mat");
+            Material matDialSteel = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchFace.mat");
+            Material matHandsGold = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchHands.mat");
+            Material matChronoRed = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchChronoHand.mat");
+            Material matStrapBlack = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchStrap.mat");
+
+            Material matRoseGold = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchRoseGold.mat");
+            Material matDialChampagne = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchDialChampagne.mat");
+            Material matStrapBrown = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchStrapBrown.mat");
+
+            Material matTitanium = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchTitanium.mat");
+            Material matDialNavy = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchDialNavy.mat");
+            Material matHandsIceBlue = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchHandsIceBlue.mat");
+            Material matStrapNavy = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchStrapNavy.mat");
+
+            Material matLume = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_WatchLumeGlow.mat");
+
+            // 1. P4: WatchCatalogManager on watch
+            WatchCatalogManager catalogMgr = watch.GetComponent<WatchCatalogManager>();
+            if (catalogMgr == null) catalogMgr = watch.AddComponent<WatchCatalogManager>();
+            catalogMgr.ClearPresets();
+
+            // Preset 0: Classic Steel Chronograph
+            catalogMgr.AddPreset(new WatchCatalogManager.WatchModelPreset
+            {
+                modelName = "Classic Steel Chronograph",
+                caseMaterial = matSteel,
+                dialMaterial = matDialSteel,
+                handsMaterial = matHandsGold,
+                chronoHandMaterial = matChronoRed,
+                strapMaterial = matStrapBlack,
+                markersMaterial = matLume
+            });
+
+            // Preset 1: Rose Gold Royal Heritage
+            catalogMgr.AddPreset(new WatchCatalogManager.WatchModelPreset
+            {
+                modelName = "Rose Gold Royal Heritage",
+                caseMaterial = matRoseGold,
+                dialMaterial = matDialChampagne,
+                handsMaterial = matRoseGold,
+                chronoHandMaterial = matChronoRed,
+                strapMaterial = matStrapBrown,
+                markersMaterial = matLume
+            });
+
+            // Preset 2: Titanium Stealth Diver
+            catalogMgr.AddPreset(new WatchCatalogManager.WatchModelPreset
+            {
+                modelName = "Titanium Stealth Diver",
+                caseMaterial = matTitanium,
+                dialMaterial = matDialNavy,
+                handsMaterial = matHandsIceBlue,
+                chronoHandMaterial = matChronoRed,
+                strapMaterial = matStrapNavy,
+                markersMaterial = matLume
+            });
+
+            // 2. P5: WatchLumeController on watch
+            WatchLumeController lumeCtrl = watch.GetComponent<WatchLumeController>();
+            if (lumeCtrl == null) lumeCtrl = watch.AddComponent<WatchLumeController>();
+
+            SerializedObject soLume = new SerializedObject(lumeCtrl);
+            soLume.FindProperty("lumeMaterial").objectReferenceValue = matLume;
+            soLume.FindProperty("dayEmission").colorValue = Color.black;
+            soLume.FindProperty("nightEmission").colorValue = new Color(0.20f, 1.0f, 0.75f) * 3.8f;
+            soLume.ApplyModifiedProperties();
+
+            // Ensure hour markers use the lume material so they glow in night mode
+            Transform face = watch.transform.Find("WatchFace");
+            if (face != null)
+            {
+                for (int h = 0; h < 12; h++)
+                {
+                    Transform marker = face.Find($"Marker_{h}");
+                    if (marker != null)
+                    {
+                        var mr = marker.GetComponent<MeshRenderer>();
+                        if (mr != null && matLume != null) mr.sharedMaterial = matLume;
+                    }
+                }
+            }
+
+            // 3. Showcase Tray & Lume Toggle on DisplayPedestal
+            GameObject pedestal = GameObject.Find("DisplayPedestal");
+            if (pedestal != null)
+            {
+                // Remove old showcase tray if present
+                Transform oldTray = pedestal.transform.Find("WatchShowcase_Tray");
+                if (oldTray != null) Undo.DestroyObjectImmediate(oldTray.gameObject);
+
+                GameObject tray = new GameObject("WatchShowcase_Tray");
+                tray.transform.SetParent(pedestal.transform, false);
+                tray.transform.localPosition = new Vector3(0f, 0.955f, 0f);
+
+                // Helper to create showcase watch stand
+                void CreateShowcaseModel(string name, Vector3 pos, Material caseMat, Material dialMat, int presetIdx)
+                {
+                    GameObject stand = new GameObject(name);
+                    stand.transform.SetParent(tray.transform, false);
+                    stand.transform.localPosition = pos;
+
+                    // Angled watch body replica
+                    GameObject sBody = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                    sBody.name = "Model_Body";
+                    sBody.transform.SetParent(stand.transform, false);
+                    sBody.transform.localPosition = new Vector3(0f, 0.012f, 0f);
+                    sBody.transform.localRotation = Quaternion.Euler(20f, 0f, 0f);
+                    sBody.transform.localScale = new Vector3(0.040f, 0.005f, 0.040f);
+                    var mrB = sBody.GetComponent<MeshRenderer>();
+                    if (mrB != null) mrB.sharedMaterial = caseMat;
+                    var colB = sBody.GetComponent<Collider>();
+                    if (colB != null) colB.isTrigger = true;
+
+                    // Dial
+                    GameObject sDial = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                    sDial.name = "Model_Dial";
+                    sDial.transform.SetParent(sBody.transform, false);
+                    sDial.transform.localPosition = new Vector3(0f, 0.55f, 0f);
+                    sDial.transform.localRotation = Quaternion.identity;
+                    sDial.transform.localScale = new Vector3(0.90f, 0.1f, 0.90f);
+                    var mrD = sDial.GetComponent<MeshRenderer>();
+                    if (mrD != null) mrD.sharedMaterial = dialMat;
+                    var colD = sDial.GetComponent<Collider>();
+                    if (colD != null) Object.DestroyImmediate(colD);
+
+                    // Click interaction to equip
+                    var intObj = sBody.AddComponent<PusherInteractable>();
+                    int index = presetIdx;
+                    intObj.AddListener(() => catalogMgr.EquipPreset(index));
+                }
+
+                // 3 Showcase Models on Velvet Platter
+                CreateShowcaseModel("Showcase_Steel", new Vector3(-0.11f, 0f, 0.02f), matSteel, matDialSteel, 0);
+                CreateShowcaseModel("Showcase_RoseGold", new Vector3(0f, 0f, 0.07f), matRoseGold, matDialChampagne, 1);
+                CreateShowcaseModel("Showcase_Titanium", new Vector3(0.11f, 0f, 0.02f), matTitanium, matDialNavy, 2);
+
+                // Interactive Super-LumiNova Night Mode Button on Pedestal Rim
+                Transform oldLumeBtn = pedestal.transform.Find("Pedestal_LumeToggle");
+                if (oldLumeBtn != null) Undo.DestroyObjectImmediate(oldLumeBtn.gameObject);
+
+                GameObject lumeBtn = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                lumeBtn.name = "Pedestal_LumeToggle";
+                lumeBtn.transform.SetParent(pedestal.transform, false);
+                lumeBtn.transform.localPosition = new Vector3(-0.24f, 0.94f, 0f);
+                lumeBtn.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+                lumeBtn.transform.localScale = new Vector3(0.035f, 0.012f, 0.035f);
+                var mrLume = lumeBtn.GetComponent<MeshRenderer>();
+                if (mrLume != null && matLume != null) mrLume.sharedMaterial = matLume;
+                var colLume = lumeBtn.GetComponent<Collider>();
+                if (colLume != null) colLume.isTrigger = true;
+                var intLume = lumeBtn.AddComponent<PusherInteractable>();
+                intLume.AddListener(() => lumeCtrl.ToggleNightMode());
+            }
+
+            string prefabPath = "Assets/_Project/Prefabs/WristWatch_Prototype.prefab";
+            PrefabUtility.SaveAsPrefabAssetAndConnect(watch, prefabPath, InteractionMode.AutomatedAction);
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+            EditorSceneManager.SaveOpenScenes();
+            Debug.Log("[LoungeBuilder] P4 (VIP Catalog) and P5 (Super-LumiNova Night Mode) configured and saved.");
+        }
     }
 }
