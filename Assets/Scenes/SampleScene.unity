@@ -2854,6 +2854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 819493772}
     - target: {fileID: 3513514019334100830, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: offsetRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513514019334100830, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: targetWristJoint
       value: 
       objectReference: {fileID: 819493772}
@@ -2871,7 +2875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2879,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2891,7 +2895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3936551390104134624, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

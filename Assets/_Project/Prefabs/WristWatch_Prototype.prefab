@@ -1993,7 +1993,7 @@ MonoBehaviour:
   targetWristBone: {fileID: 0}
   autoFindLeftWrist: 1
   offsetPosition: {x: 0, y: 0.02, z: -0.05}
-  offsetRotation: {x: 0, y: -90, z: 0}
+  offsetRotation: {x: 0, y: 0, z: 0}
   followActive: 0
 --- !u!114 &3513514019334100830
 MonoBehaviour:
