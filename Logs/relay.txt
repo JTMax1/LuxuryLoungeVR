@@ -241,3 +241,24 @@
 [2026-10-09T22:29:02.695Z] [DEBUG] log Relay->Editor communication is unblocked
 [2026-10-09T22:29:02.696Z] [INFO] log Unity client connected with ID: editor-93829-447f5t (relay 1.0.12-build.99)
 [2026-10-09T22:29:02.696Z] [INFO] connection.established clientId=editor-93829-447f5t port=9001
+[2026-10-09T22:47:54.403Z] [INFO] log Domain reload signal received from client editor-93829-447f5t
+[2026-10-09T22:47:54.410Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-09T22:47:54.411Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-09T22:47:54.954Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-09T22:47:54.954Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-09T22:47:54.954Z] [INFO] log Client disconnected - blocking and caching for recovery
+[2026-10-09T22:47:54.954Z] [WARN] connection.lost clientId=null
+[2026-10-09T22:47:54.954Z] [WARN] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[2026-10-09T22:47:54.955Z] [INFO] log Auto-shutdown timer started due to client disconnection
+[2026-10-09T22:48:44.164Z] [DEBUG] log Relay->Editor communication is unblocked
+[2026-10-09T22:48:44.164Z] [INFO] log Unity client connected with ID: editor-93829-duw667 (relay 1.0.12-build.99)
+[2026-10-09T22:48:44.164Z] [INFO] connection.established clientId=editor-93829-duw667 port=9001
+[2026-10-09T22:49:08.147Z] [INFO] log Domain reload signal received from client editor-93829-duw667
+[2026-10-09T22:49:08.147Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-09T22:49:08.148Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-09T22:49:08.437Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-09T22:49:08.437Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-09T22:49:08.437Z] [INFO] log Client disconnected - blocking and caching for recovery
+[2026-10-09T22:49:08.437Z] [WARN] connection.lost clientId=null
+[2026-10-09T22:49:08.437Z] [WARN] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[2026-10-09T22:49:08.437Z] [INFO] log Auto-shutdown timer started due to client disconnection

@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6861014176105565713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f53ef0693d69475f9fae612ef96f119, type: 3}
   m_Name: 
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6861014176105565713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84db78dcb2e9f44afa70f8b247630b60, type: 3}
   m_Name: 
@@ -1617,7 +1617,7 @@ MonoBehaviour:
   localTwistAxis: {x: 0, y: 0, z: 1}
   offsetPosition: {x: -0.04, y: 0.038, z: 0}
   offsetRotation: {x: 0, y: -90, z: 0}
-  activeFollow: 1
+  activeFollow: 0
   smoothingSpeed: 35
 --- !u!1 &7188586120325454968
 GameObject:

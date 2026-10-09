@@ -336,46 +336,29 @@ namespace VRWatch.Editor
                 Clean(shirtCuff, matShirt);
             }
 
-            // Configure WristTwistStabilizer on watchRoot
-            WristTwistStabilizer stabilizer = watchRoot.GetComponent<WristTwistStabilizer>();
-            if (stabilizer == null)
+            // Parent watch directly to LeftHandAnchor for 100% steady, zero-latency physical anchoring
+            if (leftAnchor != null)
             {
-                stabilizer = watchRoot.AddComponent<WristTwistStabilizer>();
+                watchRoot.transform.SetParent(leftAnchor.transform, false);
+                watchRoot.transform.localPosition = new Vector3(0f, 0.038f, -0.040f);
+                watchRoot.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+                watchRoot.transform.localScale = Vector3.one;
+            }
+
+            // Disable runtime tracking scripts so they do not override the steady transform
+            WristTwistStabilizer stabilizer = watchRoot.GetComponent<WristTwistStabilizer>();
+            if (stabilizer != null)
+            {
+                stabilizer.ActiveFollow = false;
+                stabilizer.enabled = false;
             }
 
             WristAnchorFollower oldFollower = watchRoot.GetComponent<WristAnchorFollower>();
             if (oldFollower != null)
             {
                 oldFollower.FollowActive = false;
+                oldFollower.enabled = false;
             }
-
-            if (leftAnchor != null)
-            {
-                stabilizer.TargetWristJoint = leftAnchor.transform;
-            }
-
-            // Offset calibration:
-            // - offsetRotation = (0, -90, 0): Rotates the watch by 90 degrees so the strap wraps
-            //   perpendicularly across the wrist circumference, with the crown pointing towards the fingers (+Z).
-            // - offsetPosition = (-0.040, 0.038, 0): Elevates the watch dial/bezel +Y by 3.8cm so it rests cleanly
-            //   on top of the sleeve/wrist surface without clipping, seated 4cm behind the wrist crease.
-            stabilizer.OffsetRotation = new Vector3(0f, -90f, 0f);
-            stabilizer.OffsetPosition = new Vector3(-0.040f, 0.038f, 0f);
-            stabilizer.TwistInfluence = 0.45f;
-            stabilizer.ActiveFollow = true;
-            stabilizer.SmoothingSpeed = 35f;
-
-            SerializedObject soStabilizer = new SerializedObject(stabilizer);
-            if (leftAnchor != null)
-            {
-                soStabilizer.FindProperty("targetWristJoint").objectReferenceValue = leftAnchor.transform;
-            }
-            soStabilizer.FindProperty("offsetRotation").vector3Value = new Vector3(0f, -90f, 0f);
-            soStabilizer.FindProperty("offsetPosition").vector3Value = new Vector3(-0.040f, 0.038f, 0f);
-            soStabilizer.FindProperty("twistInfluence").floatValue = 0.45f;
-            soStabilizer.FindProperty("activeFollow").boolValue = true;
-            soStabilizer.FindProperty("smoothingSpeed").floatValue = 35f;
-            soStabilizer.ApplyModifiedProperties();
 
             string prefabPath = "Assets/_Project/Prefabs/WristWatch_Prototype.prefab";
             PrefabUtility.SaveAsPrefabAssetAndConnect(watchRoot, prefabPath, InteractionMode.AutomatedAction);
