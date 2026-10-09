@@ -60,3 +60,9 @@ ExportedObj/
 .Trashes
 ehthumbs.db
 Thumbs.db
+Logs/AssetImportWorkerHW0.log
+Logs/AssetImportWorkerHW1.log
+Logs/Editor.log
+Logs/shadercompiler-AssetImportWorkerHW0-0.log
+Logs/shadercompiler-AssetImportWorkerHW1-0.log
+Logs/upm.log
