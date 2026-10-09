@@ -84,6 +84,12 @@ namespace VRWatch.Interaction
             set => activeFollow = value;
         }
 
+        public float SmoothingSpeed
+        {
+            get => smoothingSpeed;
+            set => smoothingSpeed = value;
+        }
+
         private void Start()
         {
             if (targetWristJoint == null && autoFindReferences)
