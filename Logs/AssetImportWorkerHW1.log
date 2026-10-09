@@ -117666,3 +117666,19 @@ Total: 17.265208 ms (FindLiveObjects: 0.569666 ms CreateObjectMapping: 0.136084 
 Prepare: number of updated asset objects reloaded= 0
 EnvironmentDependencyValues requested are different than current active one (requested -> active):
   graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 3.98 ms, found 20 plugins.
+Unloading 301 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 302 unused Assets / (35.6 MB). Loaded Objects now: 15835.
+Memory consumption went from 0.66 GB to 0.63 GB.
+Total: 40.342208 ms (FindLiveObjects: 1.357708 ms CreateObjectMapping: 0.309125 ms MarkObjects: 31.478542 ms  DeleteObjects: 6.645875 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736

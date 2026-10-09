@@ -94,3 +94,6 @@
 [2026-10-09T20:18:01.169Z] [WARN] connection.lost clientId=null
 [2026-10-09T20:18:01.169Z] [WARN] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
 [2026-10-09T20:18:01.169Z] [INFO] log Auto-shutdown timer started due to client disconnection
+[2026-10-09T20:19:17.026Z] [DEBUG] log Relay->Editor communication is unblocked
+[2026-10-09T20:19:17.029Z] [INFO] log Unity client connected with ID: editor-93829-eceouh (relay 1.0.12-build.99)
+[2026-10-09T20:19:17.030Z] [INFO] connection.established clientId=editor-93829-eceouh port=9001

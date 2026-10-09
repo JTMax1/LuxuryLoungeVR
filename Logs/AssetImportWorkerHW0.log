@@ -114583,3 +114583,38 @@ Prepare: number of updated asset objects reloaded= 0
 Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
 EnvironmentDependencyValues requested are different than current active one (requested -> active):
   graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Prepare
+AcceleratorClientConnectionCallback - disconnected - :0
+WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 4.22 ms, found 20 plugins.
+Unloading 300 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 301 unused Assets / (35.8 MB). Loaded Objects now: 15840.
+Memory consumption went from 0.67 GB to 0.64 GB.
+Total: 39.901792 ms (FindLiveObjects: 1.575500 ms CreateObjectMapping: 0.370959 ms MarkObjects: 31.447166 ms  DeleteObjects: 5.797375 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Shader 'Meta/MRUK/Scene/HighlightsAndShadows': fallback shader 'Off' not found
+EnvironmentDependencyValues requested are different than current active one (requested -> active):
+  graphicsApiMask: 2099200 -> 2164736
+========================================================================
+Received Import Request.
+  Time of request: 2026-10-09T20:19:34.523466Z
+  Time since last request: 1368.15866566699992 seconds.
+  importAddress: GUID: 99c9720ab356a0642a771bea13969a05 - Path: Assets/Scenes/SampleScene.unity - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B
+Importing 'GUID: 99c9720ab356a0642a771bea13969a05 - Path: Assets/Scenes/SampleScene.unity - Importer: ScriptedImporter/UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B' with importer (ScriptedImporter : UnityEditor.QuickSearchModule:UnityEditor.Search:ASIAI0B)
+Imported 'GUID: 99c9720ab356a0642a771bea13969a05' -> (Import Result ID: '11ea61f72748209778102dbc4c3ab715') in 0.041 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b170d24b0cdf851fa9130439c01f6447 DependenciesID=d00bc05d407493dd43736fd4219b29a6 StaticDependenciesID=5cca663c610b3fe64105a17d8cb7fcd2 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time of request: 2026-10-09T20:19:46.104149Z
+  Time since last request: 11.523774875 seconds.
+  importAddress: GUID: 89bbb724ee7a8404baa257143ebd53f5 - Path: Assets/Models/waxxtch.prefab - Importer: PreviewImporter
+Importing 'GUID: 89bbb724ee7a8404baa257143ebd53f5 - Path: Assets/Models/waxxtch.prefab - Importer: PreviewImporter' with importer (PreviewImporter)
+Imported 'GUID: 89bbb724ee7a8404baa257143ebd53f5' -> (Import Result ID: 'c8928634b90eaf35fbf3305abaef9c1e') in 0.046 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=536d25697bf6753f2a02cbf12c27fb73 DependenciesID=500aa6494a190a4d47996beece318e11 StaticDependenciesID=a2db6c77a390226a522c93ac1f70a02b 
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
