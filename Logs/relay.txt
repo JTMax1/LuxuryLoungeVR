@@ -475,3 +475,44 @@
 [2026-10-10T08:40:36.203Z] [DEBUG] log Relay->Editor communication is unblocked
 [2026-10-10T08:40:36.204Z] [INFO] log Unity client connected with ID: editor-93829-8ffh1x (relay 1.0.12-build.99)
 [2026-10-10T08:40:36.204Z] [INFO] connection.established clientId=editor-93829-8ffh1x port=9001
+[2026-10-10T11:55:14.080Z] [INFO] relay.startup port=9001 mcpClientPort=9002 editorPid=93829
+[2026-10-10T11:55:14.081Z] [INFO] log === RELAY SERVER STARTED === (unity-ai-relay v1.0.12-build.99)
+[2026-10-10T11:55:14.115Z] [INFO] log TLS trust: NODE_USE_SYSTEM_CA=on systemCAs=2 bundledCAs=145
+[2026-10-10T11:55:14.116Z] [INFO] log Starting relay server...
+[2026-10-10T11:55:14.116Z] [INFO] log Command line arguments: ["bun","/$bunfs/root/relay_mac_arm64","--relay","--port","9001","--mcp-client-port","9002","--editor-pid","93829","--shutdown-delay","180","--log-dir","/Users/bigchris/Documents/MiraClues/MetaVR/LuxuryLounge/Logs"]
+[2026-10-10T11:55:14.116Z] [INFO] log Parsed config: {"port":9001,"mcpClientPort":9002,"editorPid":"93829","shutdownDelaySeconds":180}
+[2026-10-10T11:55:14.124Z] [INFO] log Initializing relay components...
+[2026-10-10T11:55:14.124Z] [INFO] log Creating RelayEditor...
+[2026-10-10T11:55:14.132Z] [INFO] log WebSocket server started
+[2026-10-10T11:55:14.133Z] [INFO] log Relay server initialization completed
+[2026-10-10T11:55:14.133Z] [INFO] log MCP Client initialized at port: 9002
+[2026-10-10T11:55:14.177Z] [INFO] log Unity MCP Relay server started | Port: 9002 | Endpoints: /mcp/start-server, /mcp/stop-server, /mcp/server-status, /mcp/call-tool
+[2026-10-10T11:55:14.199Z] [INFO] log Unity client connected with ID: editor-93829-i6r8n6 (relay 1.0.12-build.99)
+[2026-10-10T11:55:14.200Z] [INFO] connection.established clientId=editor-93829-i6r8n6 port=9001
+[2026-10-10T11:55:14.310Z] [INFO] log [shell-env] PATH augmented with shell environment (24 entries)
+[2026-10-10T12:09:10.867Z] [INFO] log Domain reload signal received from client editor-93829-i6r8n6
+[2026-10-10T12:09:10.888Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-10T12:09:10.889Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-10T12:09:11.804Z] [DEBUG] log Relay->Editor communication is blocked
+[2026-10-10T12:09:11.804Z] [DEBUG] acp.queue.pause depth=0
+[2026-10-10T12:09:11.804Z] [INFO] log Client disconnected - blocking and caching for recovery
+[2026-10-10T12:09:11.804Z] [WARN] connection.lost clientId=null
+[2026-10-10T12:09:11.804Z] [WARN] log Client disconnected - sessions will persist until auto-shutdown, reason: Client disconnected
+[2026-10-10T12:09:11.805Z] [INFO] log Auto-shutdown timer started due to client disconnection
+[2026-10-10T12:12:11.846Z] [INFO] log Auto-shutdown timer fired after 180s inactivity, shutting down: Dedicated client disconnected
+[2026-10-10T12:12:11.857Z] [INFO] log Shutdown: Initiating graceful shutdown: Dedicated client disconnected
+[2026-10-10T12:15:52.101Z] [INFO] relay.startup port=9001 mcpClientPort=9002 editorPid=93829
+[2026-10-10T12:15:52.102Z] [INFO] log === RELAY SERVER STARTED === (unity-ai-relay v1.0.12-build.99)
+[2026-10-10T12:15:52.121Z] [INFO] log TLS trust: NODE_USE_SYSTEM_CA=on systemCAs=2 bundledCAs=145
+[2026-10-10T12:15:52.122Z] [INFO] log Starting relay server...
+[2026-10-10T12:15:52.122Z] [INFO] log Command line arguments: ["bun","/$bunfs/root/relay_mac_arm64","--relay","--port","9001","--mcp-client-port","9002","--editor-pid","93829","--shutdown-delay","180","--log-dir","/Users/bigchris/Documents/MiraClues/MetaVR/LuxuryLounge/Logs"]
+[2026-10-10T12:15:52.122Z] [INFO] log Parsed config: {"port":9001,"mcpClientPort":9002,"editorPid":"93829","shutdownDelaySeconds":180}
+[2026-10-10T12:15:52.125Z] [INFO] log Initializing relay components...
+[2026-10-10T12:15:52.125Z] [INFO] log Creating RelayEditor...
+[2026-10-10T12:15:52.128Z] [INFO] log WebSocket server started
+[2026-10-10T12:15:52.128Z] [INFO] log Relay server initialization completed
+[2026-10-10T12:15:52.128Z] [INFO] log MCP Client initialized at port: 9002
+[2026-10-10T12:15:52.144Z] [INFO] log Unity MCP Relay server started | Port: 9002 | Endpoints: /mcp/start-server, /mcp/stop-server, /mcp/server-status, /mcp/call-tool
+[2026-10-10T12:15:52.161Z] [INFO] log Unity client connected with ID: editor-93829-8k4a2t (relay 1.0.12-build.99)
+[2026-10-10T12:15:52.162Z] [INFO] connection.established clientId=editor-93829-8k4a2t port=9001
+[2026-10-10T12:15:52.249Z] [INFO] log [shell-env] PATH augmented with shell environment (24 entries)

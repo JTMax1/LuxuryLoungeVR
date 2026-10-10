@@ -1076,8 +1076,33 @@ namespace VRWatch.Editor
             var pokeRig = camRig.GetComponent<HandFingertipPokeRig>();
             if (pokeRig == null) pokeRig = camRig.AddComponent<HandFingertipPokeRig>();
 
-            var locomotion = camRig.GetComponent<HandTrackingLocomotion>();
-            if (locomotion == null) locomotion = camRig.AddComponent<HandTrackingLocomotion>();
+            // Setup Microgesture Locomotion (Lap-Resting Thumb Swipes)
+            var microLoc = camRig.GetComponent<MicrogestureLocomotion>();
+            if (microLoc == null) microLoc = camRig.AddComponent<MicrogestureLocomotion>();
+
+            var rightHandGo = GameObject.Find("[BuildingBlock] Hand Tracking right");
+            if (rightHandGo != null)
+            {
+                var sourceR = rightHandGo.GetComponent<OVRMicrogestureEventSource>();
+                if (sourceR == null) sourceR = rightHandGo.AddComponent<OVRMicrogestureEventSource>();
+                sourceR.Hand = rightHandGo.GetComponent<OVRHand>();
+
+                var so = new SerializedObject(microLoc);
+                so.FindProperty("rightGestureSource").objectReferenceValue = sourceR;
+                so.ApplyModifiedProperties();
+            }
+
+            var leftHandGo = GameObject.Find("[BuildingBlock] Hand Tracking left");
+            if (leftHandGo != null)
+            {
+                var sourceL = leftHandGo.GetComponent<OVRMicrogestureEventSource>();
+                if (sourceL == null) sourceL = leftHandGo.AddComponent<OVRMicrogestureEventSource>();
+                sourceL.Hand = leftHandGo.GetComponent<OVRHand>();
+
+                var so = new SerializedObject(microLoc);
+                so.FindProperty("leftGestureSource").objectReferenceValue = sourceL;
+                so.ApplyModifiedProperties();
+            }
         }
     }
 }
