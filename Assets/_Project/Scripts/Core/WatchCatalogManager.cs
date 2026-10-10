@@ -19,6 +19,7 @@ namespace VRWatch.Core
         {
             public string modelName;
             public Material caseMaterial;
+            public Material bezelMaterial;
             public Material dialMaterial;
             public Material handsMaterial;
             public Material chronoHandMaterial;
@@ -84,6 +85,14 @@ namespace VRWatch.Core
         }
 
         /// <summary>
+        /// Alias for EquipNextPreset used by UI and Poke buttons.
+        /// </summary>
+        public void CyclePreset()
+        {
+            EquipNextPreset();
+        }
+
+        /// <summary>
         /// Equips a specific catalog preset by index.
         /// </summary>
         public void EquipPreset(int index)
@@ -109,8 +118,10 @@ namespace VRWatch.Core
             if (activeWatchRoot == null || index < 0 || index >= catalogPresets.Count) return;
             var preset = catalogPresets[index];
 
-            // 1. Case & Metal Elements (WatchBody, Crown, Lugs, Pushers, CenterPin)
+            // 1. Case & Metal Elements (WatchBody, Bezel, Crown, Lugs, Pushers, CenterPin)
             AssignMaterialToChild(activeWatchRoot.transform, "WatchBody", preset.caseMaterial);
+            Material bezelMat = preset.bezelMaterial != null ? preset.bezelMaterial : preset.caseMaterial;
+            AssignMaterialToChild(activeWatchRoot.transform, "WatchBezel", bezelMat);
             AssignMaterialToChild(activeWatchRoot.transform, "WatchCrown", preset.caseMaterial);
             AssignMaterialToChild(activeWatchRoot.transform, "Pusher_StartStop", preset.caseMaterial);
             AssignMaterialToChild(activeWatchRoot.transform, "Pusher_Reset", preset.caseMaterial);
