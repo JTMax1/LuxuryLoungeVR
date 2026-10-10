@@ -1075,6 +1075,9 @@ namespace VRWatch.Editor
 
             var pokeRig = camRig.GetComponent<HandFingertipPokeRig>();
             if (pokeRig == null) pokeRig = camRig.AddComponent<HandFingertipPokeRig>();
+
+            var locomotion = camRig.GetComponent<HandTrackingLocomotion>();
+            if (locomotion == null) locomotion = camRig.AddComponent<HandTrackingLocomotion>();
         }
     }
 }

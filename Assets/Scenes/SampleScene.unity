@@ -11739,6 +11739,7 @@ GameObject:
   - component: {fileID: 1460009155}
   - component: {fileID: 1460009154}
   - component: {fileID: 1460009159}
+  - component: {fileID: 1460009160}
   m_Layer: 0
   m_Name: '[BuildingBlock] Camera Rig'
   m_TagString: Untagged
@@ -11922,6 +11923,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VRWatch.Interaction.HandFingertipPokeRig
   fingertipRadius: 0.018
+--- !u!114 &1460009160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460009153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94346394aac554f52918aef80a41d3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRWatch.Interaction.HandTrackingLocomotion
+  useRightHand: 1
+  pinchThreshold: 0.7
+  maxMoveSpeed: 1.6
+  maxDisplacement: 0.15
+  deadzone: 0.025
+  accelerationDamping: 10
+  turnMode: 0
+  snapTurnAngle: 45
+  snapTurnDisplacement: 0.08
+  snapTurnCooldown: 0.4
+  smoothTurnSpeed: 65
+  roomBoundsX: {x: -4.2, y: 4.2}
+  roomBoundsZ: {x: -4.2, y: 4.2}
+  anchorColor: {r: 0.85, g: 0.7, b: 0.25, a: 0.85}
 --- !u!1 &1470264788
 GameObject:
   m_ObjectHideFlags: 0
