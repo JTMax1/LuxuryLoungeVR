@@ -8443,7 +8443,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.08, g: 0.08, b: 0.09, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -18207,6 +18207,14 @@ PrefabInstance:
       propertyPath: targetWristBone
       value: 
       objectReference: {fileID: 819493772}
+    - target: {fileID: 3513514019334100830, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: activeFollow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3513514019334100830, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
+      propertyPath: offsetRotation.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3513514019334100830, guid: 90f9ee702b4ec41219241fc67414bfcc, type: 3}
       propertyPath: targetWristJoint
       value: 
