@@ -9,7 +9,6 @@ using VRWatch.Core;
 using VRWatch.Interaction;
 using Oculus.Interaction;
 using Oculus.Interaction.Surfaces;
-using Oculus.Interaction.Input;
 
 namespace VRWatch.Editor
 {
@@ -88,18 +87,31 @@ namespace VRWatch.Editor
                 EditorUtility.SetDirty(mat);
             };
 
-            // Architectural & Lounge Materials
-            createOrUpdateMat("Assets/_Project/Materials/M_LoungeWall.mat", new Color(0.9255f, 0.9216f, 0.9098f, 1.0f), 0.0f, 0.22f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_LoungeFloor.mat", new Color(0.960f, 0.957f, 0.941f, 1.0f), 0.05f, 0.70f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_PedestalMarble.mat", new Color(0.07f, 0.07f, 0.08f, 1f), 0.05f, 0.88f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_PedestalBrass.mat", new Color(0.83f, 0.68f, 0.22f, 1f), 0.92f, 0.80f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_PedestalPad.mat", new Color(0.08f, 0.10f, 0.14f, 1f), 0.02f, 0.15f, false);
+            // --- Architectural & Luxury Lounge Materials (Dark, Rich, High-Contrast) ---
+            // 1. Sophisticated Architectural Dark Charcoal Walls (#212327)
+            createOrUpdateMat("Assets/_Project/Materials/M_LoungeWall.mat", new Color(0.130f, 0.138f, 0.152f, 1.0f), 0.04f, 0.22f, false);
 
-            // Avatar & Sleeve
+            // 2. Rich Dark Walnut Wood Panels for Wainscoting (#2C1D16)
+            createOrUpdateMat("Assets/_Project/Materials/M_LoungeWood.mat", new Color(0.172f, 0.114f, 0.086f, 1.0f), 0.02f, 0.45f, false);
+
+            // 3. Brushed Architectural Bronze for Trims, Moldings & Baseboards (#50402C)
+            createOrUpdateMat("Assets/_Project/Materials/M_LoungeTrim.mat", new Color(0.314f, 0.251f, 0.173f, 1.0f), 0.82f, 0.65f, false);
+
+            // 4. Smoked Dark Herringbone Oak Hardwood Floor (#17191C)
+            createOrUpdateMat("Assets/_Project/Materials/M_LoungeFloor.mat", new Color(0.090f, 0.098f, 0.110f, 1.0f), 0.08f, 0.55f, false);
+
+            // 5. Nero Marquina Luxury Marble for Pedestal (#121316)
+            createOrUpdateMat("Assets/_Project/Materials/M_PedestalMarble.mat", new Color(0.07f, 0.07f, 0.08f, 1f), 0.05f, 0.88f, false);
+
+            // 6. Polished Satin Brass Accents for Pedestal & Buttons (#D4AF37)
+            createOrUpdateMat("Assets/_Project/Materials/M_PedestalBrass.mat", new Color(0.83f, 0.68f, 0.22f, 1f), 0.92f, 0.80f, false);
+
+            // 7. Micro-Suede Navy Velvet Display Pad (#10141D)
+            createOrUpdateMat("Assets/_Project/Materials/M_PedestalPad.mat", new Color(0.06f, 0.08f, 0.12f, 1f), 0.02f, 0.18f, false);
+
+            // Avatar & Glove
             createOrUpdateMat("Assets/_Project/Materials/M_Glove_Leather.mat", new Color(0.12f, 0.12f, 0.14f, 1.0f), 0.08f, 0.38f, false);
             createOrUpdateMat("Assets/_Project/Materials/M_Avatar_Skin.mat", new Color(0.85f, 0.68f, 0.58f, 1.0f), 0.0f, 0.28f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_SuitSleeve.mat", new Color(0.11f, 0.11f, 0.13f, 1.0f), 0.05f, 0.15f, false);
-            createOrUpdateMat("Assets/_Project/Materials/M_ShirtCuff.mat", new Color(0.96f, 0.96f, 0.97f, 1.0f), 0.0f, 0.12f, false);
 
             // Watch & Presets
             createOrUpdateMat("Assets/_Project/Materials/M_WatchMetal.mat", new Color(0.92f, 0.92f, 0.94f, 1f), 0.95f, 0.92f, false);
@@ -154,6 +166,8 @@ namespace VRWatch.Editor
 
             Material matFloor = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_LoungeFloor.mat");
             Material matWall = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_LoungeWall.mat");
+            Material matWood = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_LoungeWood.mat");
+            Material matTrim = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_LoungeTrim.mat");
 
             Action<GameObject, Material> setupMesh = (go, mat) => {
                 Collider c = go.GetComponent<Collider>();
@@ -162,7 +176,7 @@ namespace VRWatch.Editor
                 if (mr != null && mat != null) mr.sharedMaterial = mat;
             };
 
-            // Floor (10m x 10m)
+            // 1. Dark Smoked Oak Floor (10m x 10m)
             GameObject floor = GameObject.CreatePrimitive(PrimitiveType.Cube);
             floor.name = "Floor";
             floor.transform.SetParent(loungeRoot.transform, false);
@@ -170,61 +184,145 @@ namespace VRWatch.Editor
             floor.transform.localScale = new Vector3(10f, 0.1f, 10f);
             setupMesh(floor, matFloor);
 
-            // Walls (North, South, East, West) - Height: 3.5m
-            float wallH = 3.5f;
-            float wallY = wallH * 0.5f;
+            // Brass Perimeter Inlay on Floor around Pedestal
+            GameObject floorInlay = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            floorInlay.name = "Floor_BrassInlay";
+            floorInlay.transform.SetParent(loungeRoot.transform, false);
+            floorInlay.transform.localPosition = new Vector3(0f, 0.001f, 0.75f);
+            floorInlay.transform.localScale = new Vector3(1.8f, 0.002f, 1.8f);
+            setupMesh(floorInlay, matTrim);
+
+            GameObject floorInlayInner = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            floorInlayInner.name = "Floor_InlayInner";
+            floorInlayInner.transform.SetParent(loungeRoot.transform, false);
+            floorInlayInner.transform.localPosition = new Vector3(0f, 0.002f, 0.75f);
+            floorInlayInner.transform.localScale = new Vector3(1.72f, 0.002f, 1.72f);
+            setupMesh(floorInlayInner, matFloor);
+
+            // 2. Architectural Walls with Wainscoting, Baseboards & Crown Moldings
+            float totalH = 3.5f;
+            float wainscotH = 1.2f;
+            float upperH = totalH - wainscotH;
             float roomHalf = 5f;
 
-            GameObject wallN = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wallN.name = "Wall_North";
-            wallN.transform.SetParent(loungeRoot.transform, false);
-            wallN.transform.localPosition = new Vector3(0f, wallY, roomHalf);
-            wallN.transform.localScale = new Vector3(10f, wallH, 0.15f);
-            setupMesh(wallN, matWall);
+            Action<string, Vector3, Vector3, bool> buildArchitecturalWall = (wallName, pos, size, isZAligned) => {
+                GameObject wallGroup = new GameObject(wallName);
+                wallGroup.transform.SetParent(loungeRoot.transform, false);
+                wallGroup.transform.localPosition = pos;
 
-            GameObject wallS = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wallS.name = "Wall_South";
-            wallS.transform.SetParent(loungeRoot.transform, false);
-            wallS.transform.localPosition = new Vector3(0f, wallY, -roomHalf);
-            wallS.transform.localScale = new Vector3(10f, wallH, 0.15f);
-            setupMesh(wallS, matWall);
+                // Baseboard (0.15m height, Dark Bronze Trim)
+                GameObject baseboard = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                baseboard.name = "Baseboard";
+                baseboard.transform.SetParent(wallGroup.transform, false);
+                baseboard.transform.localPosition = new Vector3(0f, 0.075f, 0f);
+                baseboard.transform.localScale = isZAligned ? new Vector3(size.x, 0.15f, 0.22f) : new Vector3(0.22f, 0.15f, size.z);
+                setupMesh(baseboard, matTrim);
 
-            GameObject wallE = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wallE.name = "Wall_East";
-            wallE.transform.SetParent(loungeRoot.transform, false);
-            wallE.transform.localPosition = new Vector3(roomHalf, wallY, 0f);
-            wallE.transform.localScale = new Vector3(0.15f, wallH, 10f);
-            setupMesh(wallE, matWall);
+                // Lower Wainscot (1.2m height, Dark Walnut Wood)
+                GameObject wainscot = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                wainscot.name = "Wainscot_Walnut";
+                wainscot.transform.SetParent(wallGroup.transform, false);
+                wainscot.transform.localPosition = new Vector3(0f, wainscotH * 0.5f, 0f);
+                wainscot.transform.localScale = isZAligned ? new Vector3(size.x, wainscotH, 0.18f) : new Vector3(0.18f, wainscotH, size.z);
+                setupMesh(wainscot, matWood);
 
-            GameObject wallW = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            wallW.name = "Wall_West";
-            wallW.transform.SetParent(loungeRoot.transform, false);
-            wallW.transform.localPosition = new Vector3(-roomHalf, wallY, 0f);
-            wallW.transform.localScale = new Vector3(0.15f, wallH, 10f);
-            setupMesh(wallW, matWall);
+                // Chair Rail Molded Border (Dark Bronze Trim)
+                GameObject chairRail = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                chairRail.name = "ChairRail";
+                chairRail.transform.SetParent(wallGroup.transform, false);
+                chairRail.transform.localPosition = new Vector3(0f, wainscotH + 0.025f, 0f);
+                chairRail.transform.localScale = isZAligned ? new Vector3(size.x, 0.05f, 0.22f) : new Vector3(0.22f, 0.05f, size.z);
+                setupMesh(chairRail, matTrim);
 
+                // Upper Wall (2.3m height, Sophisticated Dark Charcoal Slate)
+                GameObject upper = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                upper.name = "UpperWall_Charcoal";
+                upper.transform.SetParent(wallGroup.transform, false);
+                upper.transform.localPosition = new Vector3(0f, wainscotH + upperH * 0.5f, 0f);
+                upper.transform.localScale = isZAligned ? new Vector3(size.x, upperH, 0.15f) : new Vector3(0.15f, upperH, size.z);
+                setupMesh(upper, matWall);
+
+                // Crown Molding along Ceiling
+                GameObject crown = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                crown.name = "CrownMolding";
+                crown.transform.SetParent(wallGroup.transform, false);
+                crown.transform.localPosition = new Vector3(0f, totalH - 0.06f, 0f);
+                crown.transform.localScale = isZAligned ? new Vector3(size.x, 0.12f, 0.22f) : new Vector3(0.22f, 0.12f, size.z);
+                setupMesh(crown, matTrim);
+            };
+
+            // North Wall (+Z)
+            buildArchitecturalWall("Wall_North", new Vector3(0f, 0f, roomHalf), new Vector3(10f, 0f, 0f), true);
+
+            // South Wall (-Z)
+            buildArchitecturalWall("Wall_South", new Vector3(0f, 0f, -roomHalf), new Vector3(10f, 0f, 0f), true);
+
+            // East Wall (+X)
+            buildArchitecturalWall("Wall_East", new Vector3(roomHalf, 0f, 0f), new Vector3(0f, 0f, 10f), false);
+
+            // West Wall (-X)
+            buildArchitecturalWall("Wall_West", new Vector3(-roomHalf, 0f, 0f), new Vector3(0f, 0f, 10f), false);
+
+            // 3. Four Corner Columns (Pilasters)
+            float colOffset = 4.88f;
+            Vector2[] cornerCoords = new Vector2[] {
+                new Vector2(-colOffset, -colOffset), new Vector2(colOffset, -colOffset),
+                new Vector2(-colOffset, colOffset), new Vector2(colOffset, colOffset)
+            };
+            for (int ci = 0; ci < cornerCoords.Length; ci++)
+            {
+                GameObject col = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                col.name = $"Pilaster_{ci}";
+                col.transform.SetParent(loungeRoot.transform, false);
+                col.transform.localPosition = new Vector3(cornerCoords[ci].x, totalH * 0.5f, cornerCoords[ci].y);
+                col.transform.localScale = new Vector3(0.35f, totalH, 0.35f);
+                setupMesh(col, matTrim);
+            }
+
+            // 4. Coffered Ceiling
             GameObject ceiling = GameObject.CreatePrimitive(PrimitiveType.Cube);
             ceiling.name = "Ceiling";
             ceiling.transform.SetParent(loungeRoot.transform, false);
-            ceiling.transform.localPosition = new Vector3(0f, wallH + 0.05f, 0f);
+            ceiling.transform.localPosition = new Vector3(0f, totalH + 0.05f, 0f);
             ceiling.transform.localScale = new Vector3(10f, 0.1f, 10f);
             setupMesh(ceiling, matWall);
 
-            // Ambient Lighting & Key Light
+            // 5. Rich, Atmospheric Gallery Lighting (NO Blinding White Fog)
             RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
-            RenderSettings.ambientLight = new Color(1.0f, 0.98f, 0.95f, 1.0f) * 1.2f;
+            RenderSettings.ambientLight = new Color(0.20f, 0.19f, 0.18f, 1.0f) * 0.40f;
 
+            // Directional Light: Warm gallery angle with soft intensity
             GameObject dirLightGo = GameObject.Find("Directional Light");
             if (dirLightGo != null)
             {
                 Light dirLight = dirLightGo.GetComponent<Light>();
                 if (dirLight != null)
                 {
-                    dirLight.color = new Color(1.0f, 0.957f, 0.902f);
-                    dirLight.intensity = 1.5f;
+                    dirLight.color = new Color(1.0f, 0.94f, 0.88f);
+                    dirLight.intensity = 0.85f;
                     dirLight.transform.rotation = Quaternion.Euler(50f, -30f, 0f);
+                    dirLight.shadows = LightShadows.Soft;
                 }
             }
+
+            // Dedicated Spotlight over Display Pedestal (Dramatic Exhibition Lighting)
+            GameObject spotGo = GameObject.Find("SpotLight_Pedestal");
+            if (spotGo == null)
+            {
+                spotGo = new GameObject("SpotLight_Pedestal");
+            }
+            spotGo.transform.SetParent(loungeRoot.transform, false);
+            spotGo.transform.localPosition = new Vector3(0f, 3.4f, 0.75f);
+            spotGo.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+
+            Light spotLight = spotGo.GetComponent<Light>();
+            if (spotLight == null) spotLight = spotGo.AddComponent<Light>();
+            spotLight.type = LightType.Spot;
+            spotLight.color = new Color(1.0f, 0.93f, 0.82f);
+            spotLight.intensity = 2.2f;
+            spotLight.range = 5.0f;
+            spotLight.spotAngle = 55f;
+            spotLight.shadows = LightShadows.Soft;
 
             return loungeRoot;
         }
@@ -237,63 +335,54 @@ namespace VRWatch.Editor
             Transform leftHandAnchor = trackingSpace.transform.Find("LeftHandAnchor");
             if (leftHandAnchor == null) return;
 
+            // 1. Remove the artificial, detached rigid cylinder sleeve
+            Transform oldSleeve = leftHandAnchor.Find("AvatarArm_Sleeve");
+            if (oldSleeve != null) Undo.DestroyObjectImmediate(oldSleeve.gameObject);
+
+            GameObject oldSleeveAny = GameObject.Find("AvatarArm_Sleeve");
+            if (oldSleeveAny != null) Undo.DestroyObjectImmediate(oldSleeveAny);
+
+            // 2. Position the WristWatch naturally and securely on the wrist
             GameObject watch = GameObject.Find("[WristWatch_Prototype]");
             if (watch == null) return;
 
             watch.transform.SetParent(leftHandAnchor, false);
-            watch.transform.localPosition = new Vector3(0.0f, 0.038f, -0.040f);
-            watch.transform.localRotation = Quaternion.Euler(0.0f, 270.0f, 0.0f);
+            // Sits right on the dorsal (back) skin surface of the wrist
+            watch.transform.localPosition = new Vector3(0.00f, 0.024f, -0.038f);
+            // Rotated so 12 o'clock points along fingers (+Z) and Dial Normal points up (+Y)
+            watch.transform.localRotation = Quaternion.identity;
             watch.transform.localScale = Vector3.one;
 
+            // Remove obsolete followers/stabilizers
             var follower = watch.GetComponent<WristAnchorFollower>();
             if (follower != null) follower.enabled = false;
             var stabilizer = watch.GetComponent<WristTwistStabilizer>();
             if (stabilizer != null) stabilizer.enabled = false;
 
-            Transform oldSleeve = leftHandAnchor.Find("AvatarArm_Sleeve");
-            if (oldSleeve != null) Undo.DestroyObjectImmediate(oldSleeve.gameObject);
+            // Attach dynamic WatchWristAligner to keep watch locked to wrist bone
+            var aligner = watch.GetComponent<WatchWristAligner>();
+            if (aligner == null) aligner = watch.AddComponent<WatchWristAligner>();
 
-            GameObject sleeveRoot = new GameObject("AvatarArm_Sleeve");
-            sleeveRoot.transform.SetParent(leftHandAnchor, false);
-            sleeveRoot.transform.localPosition = new Vector3(0.0f, 0.038f, -0.040f);
-            sleeveRoot.transform.localRotation = Quaternion.Euler(0.0f, 270.0f, 0.0f);
+            // 3. Shape watch straps to curve downward around wrist curvature
+            Transform sUpper = watch.transform.Find("WatchStrap_Upper");
+            if (sUpper != null)
+            {
+                sUpper.localPosition = new Vector3(0f, -0.005f, 0.030f);
+                sUpper.localRotation = Quaternion.Euler(32f, 0f, 0f);
+                sUpper.localScale = new Vector3(0.020f, 0.003f, 0.024f);
+            }
 
-            Material matSleeve = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_SuitSleeve.mat");
-            Material matShirt = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Project/Materials/M_ShirtCuff.mat");
+            Transform sLower = watch.transform.Find("WatchStrap_Lower");
+            if (sLower != null)
+            {
+                sLower.localPosition = new Vector3(0f, -0.005f, -0.030f);
+                sLower.localRotation = Quaternion.Euler(-32f, 0f, 0f);
+                sLower.localScale = new Vector3(0.020f, 0.003f, 0.024f);
+            }
 
-            Action<GameObject, Material> setupCuffMesh = (go, mat) => {
-                Collider c = go.GetComponent<Collider>();
-                if (c != null) UnityEngine.Object.DestroyImmediate(c);
-                var mr = go.GetComponent<MeshRenderer>();
-                if (mr != null && mat != null) mr.sharedMaterial = mat;
-            };
-
-            // Forearm sleeve
-            GameObject forearm = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            forearm.name = "Forearm_Sleeve";
-            forearm.transform.SetParent(sleeveRoot.transform, false);
-            forearm.transform.localPosition = new Vector3(-0.095f, 0.0f, 0.0f);
-            forearm.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-            forearm.transform.localScale = new Vector3(0.062f, 0.080f, 0.054f);
-            setupCuffMesh(forearm, matSleeve);
-
-            // Jacket cuff
-            GameObject jacketCuff = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            jacketCuff.name = "Jacket_Cuff";
-            jacketCuff.transform.SetParent(sleeveRoot.transform, false);
-            jacketCuff.transform.localPosition = new Vector3(-0.026f, 0.0f, 0.0f);
-            jacketCuff.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-            jacketCuff.transform.localScale = new Vector3(0.066f, 0.012f, 0.058f);
-            setupCuffMesh(jacketCuff, matSleeve);
-
-            // Shirt cuff
-            GameObject shirtCuff = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            shirtCuff.name = "Shirt_Cuff";
-            shirtCuff.transform.SetParent(sleeveRoot.transform, false);
-            shirtCuff.transform.localPosition = new Vector3(-0.017f, 0.0f, 0.0f);
-            shirtCuff.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
-            shirtCuff.transform.localScale = new Vector3(0.060f, 0.005f, 0.052f);
-            setupCuffMesh(shirtCuff, matShirt);
+            // Remove oversized floating white billboard on watch face
+            Transform oldRibbon = watch.transform.Find("Btn_Wrist_MR_Toggle");
+            if (oldRibbon != null) Undo.DestroyObjectImmediate(oldRibbon.gameObject);
         }
 
         public static void ConfigureArticulatedHands()
@@ -402,16 +491,13 @@ namespace VRWatch.Editor
             LoungeModeManager modeMgr = modeManagerGo.GetComponent<LoungeModeManager>();
             if (modeMgr == null) modeMgr = modeManagerGo.AddComponent<LoungeModeManager>();
 
-            // 4. Update Active Wristwatch with Sapphire Crystal & Dimensional Face
-            UpdateActiveWristwatchPrototype(watch, matGlass, matSteel, matLume);
+            // 4. Update Active Wristwatch
+            UpdateActiveWristwatchPrototype(watch, matGlass, matSteel, matLume, modeMgr);
 
-            // 5. Phase 1 & 2: Setup Real Visual Pedestal, 3D Mode Console, and Poke Surfaces
+            // 5. Setup Pedestal, Console, and Showcase Tray
             SetupPedestalConsoleAndTray(matMarble, matBrass, matPad, matSteel, matRoseGold, matTitanium, matBezelDiver, matDialSteel, matDialBlackHeritage, matDialNavy, matHandsIceBlue, matChronoRed, matStrapBlack, matStrapBrown, matStrapNavy, matLume, matGlass, modeMgr, lumeCtrl, catalogMgr);
 
-            // 6. Floating Wrist Ribbon / Menu on the Watch
-            SetupFloatingWristMenu(watch, matGlass, matBrass, matLume, modeMgr);
-
-            // 7. Configure Hand Tracking Poke Rig
+            // 6. Configure Hand Tracking Poke Rig
             ConfigureHandTrackingPokeRig();
 
             // Save Prefab and Scene
@@ -423,7 +509,7 @@ namespace VRWatch.Editor
             Debug.Log("[LoungeBuilder] P1-P5 Full Remediation completed and saved.");
         }
 
-        private static void UpdateActiveWristwatchPrototype(GameObject watch, Material matGlass, Material matMetal, Material matLume)
+        private static void UpdateActiveWristwatchPrototype(GameObject watch, Material matGlass, Material matMetal, Material matLume, LoungeModeManager modeMgr)
         {
             Transform face = watch.transform.Find("WatchFace");
             if (face == null) return;
@@ -457,7 +543,7 @@ namespace VRWatch.Editor
                 if (mr != null && matGlass != null) mr.sharedMaterial = matGlass;
             }
 
-            // Upgrade Pushers with Meta XR Poke Interaction
+            // Upgrade Pushers with Meta XR Poke & Touch
             var chrono = watch.GetComponent<WatchChronographController>();
             Transform pusherStart = watch.transform.Find("Pusher_StartStop");
             if (pusherStart != null && chrono != null)
@@ -470,6 +556,21 @@ namespace VRWatch.Editor
             {
                 ConfigurePokeButton(pusherReset.gameObject, pusherReset, Vector3.up, 0.005f, () => chrono.ResetChronograph());
             }
+
+            // Flush Tactile Case Pusher at 8 o'clock for VR/MR toggle (no giant floating billboard)
+            Transform existingPusherMR = watch.transform.Find("Watch_Pusher_MR_Toggle");
+            if (existingPusherMR != null) Undo.DestroyObjectImmediate(existingPusherMR.gameObject);
+
+            GameObject pusherMR = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            pusherMR.name = "Watch_Pusher_MR_Toggle";
+            pusherMR.transform.SetParent(watch.transform, false);
+            pusherMR.transform.localPosition = new Vector3(-0.020f, 0f, -0.010f); // 8 o'clock on case rim
+            pusherMR.transform.localRotation = Quaternion.Euler(0f, 150f, 90f);
+            pusherMR.transform.localScale = new Vector3(0.0040f, 0.0030f, 0.0040f);
+            var mrMR = pusherMR.GetComponent<MeshRenderer>();
+            if (mrMR != null && matMetal != null) mrMR.sharedMaterial = matMetal;
+
+            ConfigurePokeButton(pusherMR, pusherMR.transform, Vector3.up, 0.003f, () => modeMgr.ToggleMode());
         }
 
         private static void SetupPedestalConsoleAndTray(
@@ -481,7 +582,7 @@ namespace VRWatch.Editor
             Material matLume, Material matGlass,
             LoungeModeManager modeMgr, WatchLumeController lumeCtrl, WatchCatalogManager catalogMgr)
         {
-            // Remove any old pedestal (inside lounge or root)
+            // Remove any old pedestal
             GameObject oldPedestalInLounge = GameObject.Find("[Environment_Lounge]/DisplayPedestal");
             if (oldPedestalInLounge != null) Undo.DestroyObjectImmediate(oldPedestalInLounge);
 
@@ -501,7 +602,7 @@ namespace VRWatch.Editor
                 if (mr != null && mat != null) mr.sharedMaterial = mat;
             };
 
-            // 1. Pedestal Base Ring (Y: 0.00 -> 0.04m, dia: 0.52m)
+            // 1. Pedestal Base Ring (dia: 0.52m, Satin Brass)
             GameObject pBase = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pBase.name = "Pedestal_Base";
             pBase.transform.SetParent(pedestal.transform, false);
@@ -509,7 +610,7 @@ namespace VRWatch.Editor
             pBase.transform.localScale = new Vector3(0.52f, 0.035f, 0.52f);
             setupMesh(pBase, matBrass);
 
-            // 2. Pedestal Column (Y: 0.07 -> 0.81m, dia: 0.46m)
+            // 2. Pedestal Column (Nero Marquina Marble)
             GameObject pColumn = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pColumn.name = "Pedestal_Column";
             pColumn.transform.SetParent(pedestal.transform, false);
@@ -517,7 +618,7 @@ namespace VRWatch.Editor
             pColumn.transform.localScale = new Vector3(0.46f, 0.365f, 0.46f);
             setupMesh(pColumn, matMarble);
 
-            // 3. Pedestal Fluted Collar Ring (Y: 0.80 -> 0.82m, dia: 0.50m)
+            // 3. Pedestal Fluted Collar Ring (Satin Brass)
             GameObject pCollar = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pCollar.name = "Pedestal_Collar";
             pCollar.transform.SetParent(pedestal.transform, false);
@@ -525,7 +626,7 @@ namespace VRWatch.Editor
             pCollar.transform.localScale = new Vector3(0.50f, 0.010f, 0.50f);
             setupMesh(pCollar, matBrass);
 
-            // 4. Pedestal Tabletop Plinth (Y: 0.82 -> 0.85m, dia: 0.52m)
+            // 4. Pedestal Tabletop Plinth (Nero Marquina Marble)
             GameObject pTop = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pTop.name = "Pedestal_TopTable";
             pTop.transform.SetParent(pedestal.transform, false);
@@ -533,7 +634,7 @@ namespace VRWatch.Editor
             pTop.transform.localScale = new Vector3(0.52f, 0.015f, 0.52f);
             setupMesh(pTop, matMarble);
 
-            // 5. Plush Velvet Tabletop Pad (Y: 0.85m, dia: 0.44m)
+            // 5. Plush Micro-Suede Velvet Pad
             GameObject pPad = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pPad.name = "Pedestal_Pad";
             pPad.transform.SetParent(pedestal.transform, false);
@@ -542,13 +643,12 @@ namespace VRWatch.Editor
             setupMesh(pPad, matPad);
 
             // --- 3D Angled Mode Switcher Console ---
-            // Angled 30 degrees upward toward user eyes, located at front edge of tabletop
             GameObject console = new GameObject("Pedestal_Console");
             console.transform.SetParent(pedestal.transform, false);
             console.transform.localPosition = new Vector3(0f, 0.865f, -0.11f);
             console.transform.localRotation = Quaternion.Euler(30f, 0f, 0f);
 
-            // Console Plinth Housing (32cm wide, 9cm deep, 2.2cm thick)
+            // Console Plinth Housing (Dark Titanium)
             GameObject consoleHousing = GameObject.CreatePrimitive(PrimitiveType.Cube);
             consoleHousing.name = "Console_Housing";
             consoleHousing.transform.SetParent(console.transform, false);
@@ -556,7 +656,7 @@ namespace VRWatch.Editor
             consoleHousing.transform.localScale = new Vector3(0.32f, 0.022f, 0.09f);
             setupMesh(consoleHousing, matTitanium);
 
-            // Console Trim Lip
+            // Console Trim Lip (Brass)
             GameObject consoleTrim = GameObject.CreatePrimitive(PrimitiveType.Cube);
             consoleTrim.name = "Console_Trim";
             consoleTrim.transform.SetParent(console.transform, false);
@@ -602,7 +702,7 @@ namespace VRWatch.Editor
                 tm.color = Color.white;
 
                 // Setup Meta XR Poke & Touch
-                ConfigurePokeButton(btnRoot, cap.transform, Vector3.up, 0.005f, onClick);
+                ConfigurePokeButton(btnRoot, cap.transform, Vector3.up, 0.006f, onClick);
             };
 
             // Button 1: VR Lounge / MR Passthrough Toggle
@@ -636,21 +736,18 @@ namespace VRWatch.Editor
             setupMesh(trayRim, matBrass);
 
             // Build 3 fully detailed luxury watches on angled showcase stands
-            // Preset 0: Classic Steel Chronograph
             BuildDetailedShowcaseWatch(
                 tray.transform, "Showcase_Steel",
                 new Vector3(-0.115f, 0.018f, 0.0f), Quaternion.Euler(25f, 0f, 0f),
                 matSteel, matSteel, matDialSteel, matHandsIceBlue, matChronoRed, matStrapBlack, matLume, matGlass,
                 isDiver: false, presetIndex: 0, catalogMgr: catalogMgr);
 
-            // Preset 1: Rose Gold Royal Heritage (Elevated center centerpiece)
             BuildDetailedShowcaseWatch(
                 tray.transform, "Showcase_RoseGold",
                 new Vector3(0.0f, 0.026f, 0.035f), Quaternion.Euler(25f, 0f, 0f),
                 matRoseGold, matRoseGold, matDialBlackHeritage, matRoseGold, matChronoRed, matStrapBrown, matRoseGold, matGlass,
                 isDiver: false, presetIndex: 1, catalogMgr: catalogMgr);
 
-            // Preset 2: Titanium Stealth Diver
             BuildDetailedShowcaseWatch(
                 tray.transform, "Showcase_Titanium",
                 new Vector3(0.115f, 0.018f, 0.0f), Quaternion.Euler(25f, 0f, 0f),
@@ -767,8 +864,7 @@ namespace VRWatch.Editor
                 }
             }
 
-            // 5. Hands (Hour: 12mm, Minute: 18mm, Seconds Needle, Center Pin)
-            // Hour hand pointing toward 10:10
+            // 5. Hands
             GameObject hourHand = GameObject.CreatePrimitive(PrimitiveType.Cube);
             hourHand.name = "HourHand";
             hourHand.transform.SetParent(watchHead.transform, false);
@@ -777,7 +873,6 @@ namespace VRWatch.Editor
             hourHand.transform.localScale = new Vector3(0.0015f, 0.0004f, 0.011f);
             setupMesh(hourHand, handsMat);
 
-            // Minute hand pointing toward 10:10 (2 o'clock)
             GameObject minHand = GameObject.CreatePrimitive(PrimitiveType.Cube);
             minHand.name = "MinuteHand";
             minHand.transform.SetParent(watchHead.transform, false);
@@ -786,7 +881,6 @@ namespace VRWatch.Editor
             minHand.transform.localScale = new Vector3(0.0012f, 0.0004f, 0.016f);
             setupMesh(minHand, handsMat);
 
-            // Seconds sweep needle
             GameObject secHand = GameObject.CreatePrimitive(PrimitiveType.Cube);
             secHand.name = "SecondHand";
             secHand.transform.SetParent(watchHead.transform, false);
@@ -795,7 +889,6 @@ namespace VRWatch.Editor
             secHand.transform.localScale = new Vector3(0.0004f, 0.0003f, 0.017f);
             setupMesh(secHand, chronoMat);
 
-            // Center Pin
             GameObject pin = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             pin.name = "CenterPin";
             pin.transform.SetParent(watchHead.transform, false);
@@ -812,7 +905,6 @@ namespace VRWatch.Editor
             setupMesh(glass, glassMat);
 
             // 7. Lugs, Crown, Pushers
-            // 4 Lugs
             float lugX = 0.014f;
             float lugZ = 0.018f;
             for (int li = 0; li < 4; li++)
@@ -828,7 +920,6 @@ namespace VRWatch.Editor
                 setupMesh(lug, caseMat);
             }
 
-            // Crown at 3 o'clock
             GameObject crown = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             crown.name = "Crown";
             crown.transform.SetParent(watchHead.transform, false);
@@ -837,7 +928,6 @@ namespace VRWatch.Editor
             crown.transform.localScale = new Vector3(0.0045f, 0.0025f, 0.0045f);
             setupMesh(crown, caseMat);
 
-            // Pushers at 2 and 4 o'clock
             GameObject p2 = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             p2.name = "Pusher_Top";
             p2.transform.SetParent(watchHead.transform, false);
@@ -854,8 +944,7 @@ namespace VRWatch.Editor
             p4.transform.localScale = new Vector3(0.0035f, 0.0025f, 0.0035f);
             setupMesh(p4, caseMat);
 
-            // 8. Fitted Curving Straps wrapping over cushion
-            // Upper strap segment
+            // 8. Fitted Curving Straps
             GameObject sUpper = GameObject.CreatePrimitive(PrimitiveType.Cube);
             sUpper.name = "Strap_Upper";
             sUpper.transform.SetParent(watchHead.transform, false);
@@ -864,7 +953,6 @@ namespace VRWatch.Editor
             sUpper.transform.localScale = new Vector3(0.020f, 0.003f, 0.022f);
             setupMesh(sUpper, strapMat);
 
-            // Lower strap segment
             GameObject sLower = GameObject.CreatePrimitive(PrimitiveType.Cube);
             sLower.name = "Strap_Lower";
             sLower.transform.SetParent(watchHead.transform, false);
@@ -878,67 +966,17 @@ namespace VRWatch.Editor
             ConfigurePokeButton(watchHead, watchHead.transform, Vector3.up, 0.005f, () => catalogMgr.EquipPreset(targetIdx));
         }
 
-        private static void SetupFloatingWristMenu(GameObject watch, Material matGlass, Material matBrass, Material matLume, LoungeModeManager modeMgr)
-        {
-            Transform existing = watch.transform.Find("Btn_Wrist_MR_Toggle");
-            if (existing != null) Undo.DestroyObjectImmediate(existing.gameObject);
-
-            // Floating wrist ribbon pill 5cm above the watch strap
-            GameObject ribbon = new GameObject("Btn_Wrist_MR_Toggle");
-            ribbon.transform.SetParent(watch.transform, false);
-            ribbon.transform.localPosition = new Vector3(0f, 0.048f, 0f);
-            ribbon.transform.localRotation = Quaternion.Euler(15f, 0f, 0f);
-
-            Action<GameObject, Material> setupMesh = (go, mat) => {
-                Collider c = go.GetComponent<Collider>();
-                if (c != null) UnityEngine.Object.DestroyImmediate(c);
-                var mr = go.GetComponent<MeshRenderer>();
-                if (mr != null && mat != null) mr.sharedMaterial = mat;
-            };
-
-            // Glassmorphic housing pill
-            GameObject pill = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            pill.name = "Pill_Housing";
-            pill.transform.SetParent(ribbon.transform, false);
-            pill.transform.localPosition = Vector3.zero;
-            pill.transform.localScale = new Vector3(0.046f, 0.014f, 0.008f);
-            setupMesh(pill, matGlass);
-
-            // Raised Movable Button Cap
-            GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cap.name = "ButtonCap";
-            cap.transform.SetParent(ribbon.transform, false);
-            cap.transform.localPosition = new Vector3(0f, 0f, 0.004f);
-            cap.transform.localScale = new Vector3(0.040f, 0.010f, 0.004f);
-            setupMesh(cap, matLume);
-
-            // Text Label
-            GameObject label = new GameObject("Label");
-            label.transform.SetParent(ribbon.transform, false);
-            label.transform.localPosition = new Vector3(0f, 0f, 0.007f);
-            var tm = label.AddComponent<TextMesh>();
-            tm.text = "VR / MR";
-            tm.fontSize = 24;
-            tm.characterSize = 0.0012f;
-            tm.alignment = TextAlignment.Center;
-            tm.anchor = TextAnchor.MiddleCenter;
-            tm.color = new Color(0.05f, 0.15f, 0.20f, 1f);
-
-            // Configure Poke Interaction
-            ConfigurePokeButton(ribbon, cap.transform, Vector3.forward, 0.005f, () => modeMgr.ToggleMode());
-        }
-
         public static void ConfigurePokeButton(
             GameObject buttonObj, Transform capTransform, Vector3 normalDir, float pressDepth,
             UnityEngine.Events.UnityAction onPushedAction)
         {
-            // 1. BoxCollider for touch/trigger detection
+            // 1. BoxCollider for touch/trigger detection (generous bounds for reliable Quest touch)
             var col = buttonObj.GetComponent<BoxCollider>();
             if (col == null) col = buttonObj.AddComponent<BoxCollider>();
             col.isTrigger = true;
-            col.size = new Vector3(0.045f, 0.045f, 0.030f);
+            col.size = new Vector3(0.055f, 0.040f, 0.055f);
 
-            // 2. Child Surface GameObject with PlaneSurface and ClippedPlaneSurface
+            // 2. Child Surface GameObject with CircleSurface (Direct ISurfacePatch implementation)
             Transform surfChild = buttonObj.transform.Find("Surface");
             GameObject surfGo;
             if (surfChild == null)
@@ -953,33 +991,31 @@ namespace VRWatch.Editor
                 surfGo = surfChild.gameObject;
             }
 
-            var plane = surfGo.GetComponent<PlaneSurface>();
-            if (plane == null) plane = surfGo.AddComponent<PlaneSurface>();
+            // Remove any old unconfigured BoundsClipper or ClippedPlaneSurface that caused 0-sized bounds
+            var oldClipped = surfGo.GetComponent<ClippedPlaneSurface>();
+            if (oldClipped != null) UnityEngine.Object.DestroyImmediate(oldClipped);
+            var oldClipper = surfGo.GetComponent<BoundsClipper>();
+            if (oldClipper != null) UnityEngine.Object.DestroyImmediate(oldClipper);
 
-            var clipped = surfGo.GetComponent<ClippedPlaneSurface>();
-            if (clipped == null) clipped = surfGo.AddComponent<ClippedPlaneSurface>();
+            // Add PlaneSurface & CircleSurface as the official Meta XR surface patch
+            var planeSurf = surfGo.GetComponent<PlaneSurface>();
+            if (planeSurf == null) planeSurf = surfGo.AddComponent<PlaneSurface>();
 
-            var clipper = surfGo.GetComponent<BoundsClipper>();
-            if (clipper == null) clipper = surfGo.AddComponent<BoundsClipper>();
+            var circleSurf = surfGo.GetComponent<CircleSurface>();
+            if (circleSurf == null) circleSurf = surfGo.AddComponent<CircleSurface>();
 
-            // Set plane on clipped
-            var planeField = typeof(ClippedPlaneSurface).GetField("_planeSurface", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (planeField != null) planeField.SetValue(clipped, plane);
+            var planeField = typeof(CircleSurface).GetField("_planeSurface", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (planeField != null) planeField.SetValue(circleSurf, planeSurf);
 
-            // Set clippers on clipped
-            var clippersField = typeof(ClippedPlaneSurface).GetField("_clippers", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (clippersField != null)
-            {
-                var list = (IList)clippersField.GetValue(clipped);
-                if (!list.Contains(clipper)) list.Add(clipper);
-            }
+            var radiusField = typeof(CircleSurface).GetField("_radius", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (radiusField != null) radiusField.SetValue(circleSurf, 0.025f);
 
             // 3. PokeInteractable
             var poke = buttonObj.GetComponent<PokeInteractable>();
             if (poke == null) poke = buttonObj.AddComponent<PokeInteractable>();
 
             var surfField = typeof(PokeInteractable).GetField("_surfacePatch", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (surfField != null) surfField.SetValue(poke, clipped);
+            if (surfField != null) surfField.SetValue(poke, circleSurf);
 
             var dragField = typeof(PokeInteractable).GetField("_dragThresholds", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
             if (dragField != null)
@@ -1014,7 +1050,7 @@ namespace VRWatch.Editor
                 }
             }
 
-            // 5. PokeButtonFeedback for visual depression, spring return, audio click
+            // 5. PokeButtonFeedback for visual depression, spring return, audio click, and proximity touch
             var feedback = buttonObj.GetComponent<PokeButtonFeedback>();
             if (feedback == null) feedback = buttonObj.AddComponent<PokeButtonFeedback>();
 
@@ -1040,8 +1076,6 @@ namespace VRWatch.Editor
 
             var pokeRig = camRig.GetComponent<HandFingertipPokeRig>();
             if (pokeRig == null) pokeRig = camRig.AddComponent<HandFingertipPokeRig>();
-
-            pokeRig.SetupHandRigs();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,8 +16,11 @@ namespace VRWatch.Interaction
         [Tooltip("The virtual collector lounge environment parent object.")]
         [SerializeField] private GameObject loungeEnvironment;
 
-        [Tooltip("The OVRPassthroughLayer component (if present).")]
-        [SerializeField] private MonoBehaviour passthroughLayer;
+        [Tooltip("The OVRPassthroughLayer component.")]
+        [SerializeField] private OVRPassthroughLayer passthroughLayer;
+
+        [Tooltip("Main XR Camera.")]
+        [SerializeField] private Camera xrCamera;
 
         [Header("Current Mode")]
         [Tooltip("If true, Passthrough MR is active. If false, Full VR Lounge is active.")]
@@ -38,10 +42,16 @@ namespace VRWatch.Interaction
 
             if (passthroughLayer == null)
             {
-                GameObject ptObj = GameObject.Find("[BuildingBlock] Passthrough");
-                if (ptObj != null)
+                passthroughLayer = UnityEngine.Object.FindObjectOfType<OVRPassthroughLayer>();
+            }
+
+            if (xrCamera == null)
+            {
+                xrCamera = Camera.main;
+                if (xrCamera == null)
                 {
-                    passthroughLayer = ptObj.GetComponent<MonoBehaviour>();
+                    var eye = GameObject.Find("CenterEyeAnchor");
+                    if (eye != null) xrCamera = eye.GetComponent<Camera>();
                 }
             }
 
@@ -50,6 +60,12 @@ namespace VRWatch.Interaction
 
         private void Start()
         {
+            // Ensure Insight Passthrough is globally enabled in OVRManager
+            if (OVRManager.instance != null)
+            {
+                OVRManager.instance.isInsightPassthroughEnabled = true;
+            }
+
             ApplyModeState(isPassthroughActive);
         }
 
@@ -85,15 +101,40 @@ namespace VRWatch.Interaction
 
         private void ApplyModeState(bool passthrough)
         {
+            // 1. Lounge Room Enclosure
             if (loungeEnvironment != null)
             {
-                // In Passthrough mode, deactivate the virtual room geometry
                 loungeEnvironment.SetActive(!passthrough);
+            }
+
+            // 2. Hardware Passthrough Layer
+            if (passthroughLayer == null)
+            {
+                passthroughLayer = UnityEngine.Object.FindObjectOfType<OVRPassthroughLayer>();
             }
 
             if (passthroughLayer != null)
             {
                 passthroughLayer.enabled = passthrough;
+                passthroughLayer.hidden = !passthrough;
+            }
+
+            // 3. Camera Background Transparency
+            if (xrCamera == null) xrCamera = Camera.main;
+            if (xrCamera != null)
+            {
+                if (passthrough)
+                {
+                    // Passthrough underlay requires alpha = 0.0 to show real world
+                    xrCamera.clearFlags = CameraClearFlags.SolidColor;
+                    xrCamera.backgroundColor = new Color(0f, 0f, 0f, 0f);
+                }
+                else
+                {
+                    // Full VR mode uses rich dark gallery backdrop
+                    xrCamera.clearFlags = CameraClearFlags.SolidColor;
+                    xrCamera.backgroundColor = new Color(0.08f, 0.08f, 0.09f, 1.0f);
+                }
             }
         }
 

@@ -66,6 +66,7 @@
     <Compile Include="Assets/_Project/Scripts/Interaction/PokeButtonFeedback.cs" />
     <Compile Include="Assets/TutorialInfo/Readme.cs" />
     <Compile Include="Assets/_Project/Scripts/Core/WatchAudioController.cs" />
+    <Compile Include="Assets/_Project/Scripts/Interaction/WatchWristAligner.cs" />
     <Compile Include="Assets/_Project/Scripts/Core/AnalogClockController.cs" />
     <Compile Include="Assets/_Project/Scripts/Core/WatchChronographController.cs" />
   </ItemGroup>
