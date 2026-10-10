@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Oculus.Interaction;
+using VRWatch.Core;
 
 namespace VRWatch.Interaction
 {
@@ -11,10 +12,29 @@ namespace VRWatch.Interaction
     /// 1. Trigger Collider contact with fingers/controllers
     /// 2. Direct Proximity distance check to index fingertips
     /// 3. Meta XR Interaction SDK PokeInteractable.WhenSelect
+    /// 4. Direct guaranteed action execution (immune to serialization loss)
     /// </summary>
     [DisallowMultipleComponent]
     public class PokeButtonFeedback : MonoBehaviour
     {
+        public enum PokeButtonActionType
+        {
+            CustomEventOnly = 0,
+            ToggleLoungeMode = 1,
+            ToggleSuperLumiNova = 2,
+            CycleWatchPreset = 3,
+            EquipWatchPreset = 4,
+            ChronographStartStop = 5,
+            ChronographReset = 6
+        }
+
+        [Header("Action Configuration")]
+        [Tooltip("Direct built-in action to execute when pressed. Bypasses serialization issues.")]
+        [SerializeField] private PokeButtonActionType actionType = PokeButtonActionType.CustomEventOnly;
+
+        [Tooltip("Target watch preset index for EquipWatchPreset action.")]
+        [SerializeField] private int presetIndex = 0;
+
         [Header("Visual Feedback")]
         [Tooltip("The moving button cap transform. If null, uses this transform.")]
         [SerializeField] private Transform movableCap;
@@ -34,7 +54,7 @@ namespace VRWatch.Interaction
 
         [Header("Proximity Detection")]
         [Tooltip("Proximity radius in meters to trigger button when finger nears cap.")]
-        [SerializeField] private float proximityTriggerRadius = 0.024f;
+        [SerializeField] private float proximityTriggerRadius = 0.032f;
 
         [Header("Event")]
         [SerializeField] private UnityEvent onPushed = new UnityEvent();
@@ -46,6 +66,13 @@ namespace VRWatch.Interaction
         private bool _isInitialized = false;
 
         public UnityEvent OnPushed => onPushed;
+        public PokeButtonActionType ActionType => actionType;
+
+        public void SetAction(PokeButtonActionType action, int preset = 0)
+        {
+            actionType = action;
+            presetIndex = preset;
+        }
 
         public void AddListener(UnityAction action)
         {
@@ -150,7 +177,7 @@ namespace VRWatch.Interaction
         }
 
         /// <summary>
-        /// Fires button press with mechanical travel depression and audio click.
+        /// Fires button press with mechanical travel depression, audio click, and direct action execution.
         /// </summary>
         public void TriggerPush()
         {
@@ -171,14 +198,102 @@ namespace VRWatch.Interaction
                 audioSource.PlayOneShot(_clickClip, 0.85f);
             }
 
-            // Fire event
+            // 1. Guaranteed Direct Action
+            ExecuteDirectAction();
+
+            // 2. Fire UnityEvent
             onPushed?.Invoke();
+        }
+
+        private void ExecuteDirectAction()
+        {
+            switch (actionType)
+            {
+                case PokeButtonActionType.ToggleLoungeMode:
+                    var modeMgr = UnityEngine.Object.FindObjectOfType<LoungeModeManager>();
+                    if (modeMgr != null)
+                    {
+                        modeMgr.ToggleMode();
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Toggled VR/MR Passthrough!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[{nameof(PokeButtonFeedback)}] LoungeModeManager not found in scene!");
+                    }
+                    break;
+
+                case PokeButtonActionType.ToggleSuperLumiNova:
+                    var lumeCtrl = UnityEngine.Object.FindObjectOfType<WatchLumeController>();
+                    if (lumeCtrl != null)
+                    {
+                        lumeCtrl.ToggleNightMode();
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Toggled Super-LumiNova Night Mode!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[{nameof(PokeButtonFeedback)}] WatchLumeController not found in scene!");
+                    }
+                    break;
+
+                case PokeButtonActionType.CycleWatchPreset:
+                    var catalogMgr = UnityEngine.Object.FindObjectOfType<WatchCatalogManager>();
+                    if (catalogMgr != null)
+                    {
+                        catalogMgr.CyclePreset();
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Cycled Watch Preset!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[{nameof(PokeButtonFeedback)}] WatchCatalogManager not found in scene!");
+                    }
+                    break;
+
+                case PokeButtonActionType.EquipWatchPreset:
+                    var catalogMgrEquip = UnityEngine.Object.FindObjectOfType<WatchCatalogManager>();
+                    if (catalogMgrEquip != null)
+                    {
+                        catalogMgrEquip.EquipPreset(presetIndex);
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Equipped Watch Preset {presetIndex}!");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[{nameof(PokeButtonFeedback)}] WatchCatalogManager not found in scene!");
+                    }
+                    break;
+
+                case PokeButtonActionType.ChronographStartStop:
+                    var chrono = UnityEngine.Object.FindObjectOfType<WatchChronographController>();
+                    if (chrono != null)
+                    {
+                        chrono.ToggleStartStop();
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Chronograph Start/Stop toggled!");
+                    }
+                    break;
+
+                case PokeButtonActionType.ChronographReset:
+                    var chronoReset = UnityEngine.Object.FindObjectOfType<WatchChronographController>();
+                    if (chronoReset != null)
+                    {
+                        chronoReset.ResetChronograph();
+                        Debug.Log($"[{nameof(PokeButtonFeedback)}] Pressed {name} -> Chronograph Reset!");
+                    }
+                    break;
+
+                case PokeButtonActionType.CustomEventOnly:
+                default:
+                    // Handled solely by onPushed
+                    break;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other == null) return;
             string n = other.name.ToLower();
-            if (n.Contains("tip") || n.Contains("index") || n.Contains("finger") || n.Contains("hand") || n.Contains("poke") || n.Contains("ctrl"))
+            // Accept any contact with hand, fingertips, controllers, or XR bones
+            if (n.Contains("tip") || n.Contains("index") || n.Contains("finger") || n.Contains("hand") || 
+                n.Contains("poke") || n.Contains("ctrl") || n.Contains("bone") || n.Contains("xrhand") ||
+                (other.transform.root != null && (other.transform.root.name.Contains("BuildingBlock") || other.transform.root.name.Contains("OVRCameraRig"))))
             {
                 TriggerPush();
             }

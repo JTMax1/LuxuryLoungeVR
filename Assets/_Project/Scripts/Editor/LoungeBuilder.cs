@@ -548,13 +548,13 @@ namespace VRWatch.Editor
             Transform pusherStart = watch.transform.Find("Pusher_StartStop");
             if (pusherStart != null && chrono != null)
             {
-                ConfigurePokeButton(pusherStart.gameObject, pusherStart, Vector3.up, 0.005f, () => chrono.ToggleStartStop());
+                ConfigurePokeButton(pusherStart.gameObject, pusherStart, Vector3.up, 0.005f, PokeButtonFeedback.PokeButtonActionType.ChronographStartStop);
             }
 
             Transform pusherReset = watch.transform.Find("Pusher_Reset");
             if (pusherReset != null && chrono != null)
             {
-                ConfigurePokeButton(pusherReset.gameObject, pusherReset, Vector3.up, 0.005f, () => chrono.ResetChronograph());
+                ConfigurePokeButton(pusherReset.gameObject, pusherReset, Vector3.up, 0.005f, PokeButtonFeedback.PokeButtonActionType.ChronographReset);
             }
 
             // Flush Tactile Case Pusher at 8 o'clock for VR/MR toggle (no giant floating billboard)
@@ -570,7 +570,7 @@ namespace VRWatch.Editor
             var mrMR = pusherMR.GetComponent<MeshRenderer>();
             if (mrMR != null && matMetal != null) mrMR.sharedMaterial = matMetal;
 
-            ConfigurePokeButton(pusherMR, pusherMR.transform, Vector3.up, 0.003f, () => modeMgr.ToggleMode());
+            ConfigurePokeButton(pusherMR, pusherMR.transform, Vector3.up, 0.003f, PokeButtonFeedback.PokeButtonActionType.ToggleLoungeMode);
         }
 
         private static void SetupPedestalConsoleAndTray(
@@ -665,8 +665,8 @@ namespace VRWatch.Editor
             setupMesh(consoleTrim, matBrass);
 
             // Helper to build prominent mechanical buttons on console
-            Action<string, Vector3, Material, Material, string, UnityEngine.Events.UnityAction> createConsoleButton =
-                (btnName, localPos, collarMat, capMat, labelText, onClick) =>
+            Action<string, Vector3, Material, Material, string, PokeButtonFeedback.PokeButtonActionType> createConsoleButton =
+                (btnName, localPos, collarMat, capMat, labelText, actionType) =>
             {
                 GameObject btnRoot = new GameObject(btnName);
                 btnRoot.transform.SetParent(console.transform, false);
@@ -702,17 +702,17 @@ namespace VRWatch.Editor
                 tm.color = Color.white;
 
                 // Setup Meta XR Poke & Touch
-                ConfigurePokeButton(btnRoot, cap.transform, Vector3.up, 0.006f, onClick);
+                ConfigurePokeButton(btnRoot, cap.transform, Vector3.up, 0.006f, actionType);
             };
 
             // Button 1: VR Lounge / MR Passthrough Toggle
-            createConsoleButton("Btn_ToggleMode", new Vector3(-0.095f, 0f, 0f), matBrass, matBrass, "VR / MR\nPASSTHROUGH", () => modeMgr.ToggleMode());
+            createConsoleButton("Btn_ToggleMode", new Vector3(-0.095f, 0f, 0f), matBrass, matBrass, "VR / MR\nPASSTHROUGH", PokeButtonFeedback.PokeButtonActionType.ToggleLoungeMode);
 
             // Button 2: Super-LumiNova Night Mode Toggle
-            createConsoleButton("Btn_ToggleLume", new Vector3(0.0f, 0f, 0f), matTitanium, matLume, "SUPER\nLUMINOVA", () => lumeCtrl.ToggleNightMode());
+            createConsoleButton("Btn_ToggleLume", new Vector3(0.0f, 0f, 0f), matTitanium, matLume, "SUPER\nLUMINOVA", PokeButtonFeedback.PokeButtonActionType.ToggleSuperLumiNova);
 
             // Button 3: Cycle Luxury Watch Preset
-            createConsoleButton("Btn_NextPreset", new Vector3(0.095f, 0f, 0f), matSteel, matHandsIceBlue, "CYCLE\nWATCH", () => catalogMgr.CyclePreset());
+            createConsoleButton("Btn_NextPreset", new Vector3(0.095f, 0f, 0f), matSteel, matHandsIceBlue, "CYCLE\nWATCH", PokeButtonFeedback.PokeButtonActionType.CycleWatchPreset);
 
             // --- Showcase Tray & Detailed 3D Watches ---
             GameObject tray = new GameObject("WatchShowcase_Tray");
@@ -963,18 +963,18 @@ namespace VRWatch.Editor
 
             // Setup Meta XR Poke & Touch interaction to Equip this Preset on poke
             int targetIdx = presetIndex;
-            ConfigurePokeButton(watchHead, watchHead.transform, Vector3.up, 0.005f, () => catalogMgr.EquipPreset(targetIdx));
+            ConfigurePokeButton(watchHead, watchHead.transform, Vector3.up, 0.005f, PokeButtonFeedback.PokeButtonActionType.EquipWatchPreset, targetIdx);
         }
 
         public static void ConfigurePokeButton(
             GameObject buttonObj, Transform capTransform, Vector3 normalDir, float pressDepth,
-            UnityEngine.Events.UnityAction onPushedAction)
+            PokeButtonFeedback.PokeButtonActionType actionType, int presetIdx = 0)
         {
             // 1. BoxCollider for touch/trigger detection (generous bounds for reliable Quest touch)
             var col = buttonObj.GetComponent<BoxCollider>();
             if (col == null) col = buttonObj.AddComponent<BoxCollider>();
             col.isTrigger = true;
-            col.size = new Vector3(0.055f, 0.040f, 0.055f);
+            col.size = new Vector3(0.065f, 0.050f, 0.065f);
 
             // 2. Child Surface GameObject with CircleSurface (Direct ISurfacePatch implementation)
             Transform surfChild = buttonObj.transform.Find("Surface");
@@ -983,15 +983,19 @@ namespace VRWatch.Editor
             {
                 surfGo = new GameObject("Surface");
                 surfGo.transform.SetParent(buttonObj.transform, false);
-                surfGo.transform.localPosition = Vector3.zero;
-                surfGo.transform.localRotation = Quaternion.identity;
             }
             else
             {
                 surfGo = surfChild.gameObject;
             }
 
-            // Remove any old unconfigured BoundsClipper or ClippedPlaneSurface that caused 0-sized bounds
+            if (capTransform != null)
+            {
+                surfGo.transform.position = capTransform.position + capTransform.up * 0.005f;
+                surfGo.transform.rotation = Quaternion.LookRotation(normalDir, Vector3.up);
+            }
+
+            // Remove any old unconfigured BoundsClipper or ClippedPlaneSurface
             var oldClipped = surfGo.GetComponent<ClippedPlaneSurface>();
             if (oldClipped != null) UnityEngine.Object.DestroyImmediate(oldClipped);
             var oldClipper = surfGo.GetComponent<BoundsClipper>();
@@ -1008,7 +1012,7 @@ namespace VRWatch.Editor
             if (planeField != null) planeField.SetValue(circleSurf, planeSurf);
 
             var radiusField = typeof(CircleSurface).GetField("_radius", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (radiusField != null) radiusField.SetValue(circleSurf, 0.025f);
+            if (radiusField != null) radiusField.SetValue(circleSurf, 0.030f);
 
             // 3. PokeInteractable
             var poke = buttonObj.GetComponent<PokeInteractable>();
@@ -1028,7 +1032,22 @@ namespace VRWatch.Editor
                 dragField.SetValue(poke, dragConfig);
             }
 
-            // 4. InteractableUnityEventWrapper
+            // 4. PokeButtonFeedback with guaranteed direct action execution
+            var feedback = buttonObj.GetComponent<PokeButtonFeedback>();
+            if (feedback == null) feedback = buttonObj.AddComponent<PokeButtonFeedback>();
+
+            feedback.SetAction(actionType, presetIdx);
+
+            var capField = typeof(PokeButtonFeedback).GetField("movableCap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (capField != null) capField.SetValue(feedback, capTransform != null ? capTransform : buttonObj.transform);
+
+            var dirField = typeof(PokeButtonFeedback).GetField("localPressDirection", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (dirField != null) dirField.SetValue(feedback, -normalDir.normalized);
+
+            var depthField = typeof(PokeButtonFeedback).GetField("pressDepth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (depthField != null) depthField.SetValue(feedback, pressDepth);
+
+            // 5. InteractableUnityEventWrapper connecting PokeInteractable -> feedback.TriggerPush
             var wrapper = buttonObj.GetComponent<InteractableUnityEventWrapper>();
             if (wrapper == null) wrapper = buttonObj.AddComponent<InteractableUnityEventWrapper>();
 
@@ -1044,28 +1063,8 @@ namespace VRWatch.Editor
                     evt = new UnityEngine.Events.UnityEvent();
                     selectField.SetValue(wrapper, evt);
                 }
-                if (onPushedAction != null)
-                {
-                    evt.AddListener(onPushedAction);
-                }
-            }
-
-            // 5. PokeButtonFeedback for visual depression, spring return, audio click, and proximity touch
-            var feedback = buttonObj.GetComponent<PokeButtonFeedback>();
-            if (feedback == null) feedback = buttonObj.AddComponent<PokeButtonFeedback>();
-
-            var capField = typeof(PokeButtonFeedback).GetField("movableCap", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (capField != null) capField.SetValue(feedback, capTransform != null ? capTransform : buttonObj.transform);
-
-            var dirField = typeof(PokeButtonFeedback).GetField("localPressDirection", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (dirField != null) dirField.SetValue(feedback, -normalDir.normalized);
-
-            var depthField = typeof(PokeButtonFeedback).GetField("pressDepth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (depthField != null) depthField.SetValue(feedback, pressDepth);
-
-            if (onPushedAction != null)
-            {
-                feedback.AddListener(onPushedAction);
+                UnityEditor.Events.UnityEventTools.RemovePersistentListener(evt, feedback.TriggerPush);
+                UnityEditor.Events.UnityEventTools.AddPersistentListener(evt, feedback.TriggerPush);
             }
         }
 

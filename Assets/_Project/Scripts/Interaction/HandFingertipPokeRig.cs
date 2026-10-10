@@ -85,45 +85,104 @@ namespace VRWatch.Interaction
                 FindSkeletons();
             }
 
+            // Clean up any stray colliders that may have attached to ring fingers
+            CleanupStrayColliders(_leftSkeleton, "Left_Fingertip_PokeCollider");
+            CleanupStrayColliders(_rightSkeleton, "Right_Fingertip_PokeCollider");
+
             // Left Hand Fingertip
-            if (_leftSkeleton != null && _leftSkeleton.IsInitialized && LeftIndexTip == null)
+            if (_leftSkeleton != null && _leftSkeleton.IsInitialized && (LeftIndexTip == null || !IsStrictIndexTip(LeftIndexTip)))
             {
                 Transform tipBone = FindIndexTipBone(_leftSkeleton);
                 if (tipBone != null)
                 {
                     LeftIndexTip = tipBone;
                     _leftCollider = AttachFingertipTrigger(tipBone.gameObject, "Left_Fingertip_PokeCollider");
+                    Debug.Log($"[HandFingertipPokeRig] Successfully attached Left Index Poke Collider to: {tipBone.name}");
                 }
             }
 
             // Right Hand Fingertip
-            if (_rightSkeleton != null && _rightSkeleton.IsInitialized && RightIndexTip == null)
+            if (_rightSkeleton != null && _rightSkeleton.IsInitialized && (RightIndexTip == null || !IsStrictIndexTip(RightIndexTip)))
             {
                 Transform tipBone = FindIndexTipBone(_rightSkeleton);
                 if (tipBone != null)
                 {
                     RightIndexTip = tipBone;
                     _rightCollider = AttachFingertipTrigger(tipBone.gameObject, "Right_Fingertip_PokeCollider");
+                    Debug.Log($"[HandFingertipPokeRig] Successfully attached Right Index Poke Collider to: {tipBone.name}");
                 }
             }
+        }
+
+        private void CleanupStrayColliders(OVRSkeleton skeleton, string colName)
+        {
+            if (skeleton == null || skeleton.Bones == null) return;
+            foreach (var b in skeleton.Bones)
+            {
+                if (b.Transform == null) continue;
+                if (!IsStrictIndexTip(b.Transform))
+                {
+                    Transform stray = b.Transform.Find(colName);
+                    if (stray != null)
+                    {
+                        Debug.LogWarning($"[HandFingertipPokeRig] Removing misplaced poke collider from {b.Transform.name}");
+                        Destroy(stray.gameObject);
+                    }
+                }
+            }
+        }
+
+        private static bool IsStrictIndexTip(Transform t)
+        {
+            if (t == null) return false;
+            string n = t.name;
+            if (n.Contains("Ring") || n.Contains("Pinky") || n.Contains("Thumb") || n.Contains("Middle") || n.Contains("Little"))
+                return false;
+            return n.Contains("IndexTip") || n.Contains("index_tip") || n.Contains("Index_Tip");
         }
 
         private Transform FindIndexTipBone(OVRSkeleton skeleton)
         {
             if (skeleton.Bones == null) return null;
 
+            // 1. Primary: Match by exact bone name containing IndexTip (excluding Ring, Thumb, etc.)
             foreach (var b in skeleton.Bones)
             {
-                if (b.Id == OVRSkeleton.BoneId.Hand_IndexTip)
+                if (b.Transform != null && IsStrictIndexTip(b.Transform))
                 {
                     return b.Transform;
                 }
             }
 
-            // Fallback: search by name in children
-            return FindChildRecursive(skeleton.transform, "index_tip") ??
-                   FindChildRecursive(skeleton.transform, "b_index_null") ??
-                   FindChildRecursive(skeleton.transform, "IndexTip");
+            // 2. OpenXR XRHand skeleton: bone ID 10 is XRHand_IndexTip.
+            // On XRHand skeletons, bone ID 20 is XRHand_RingTip! NEVER use Hand_IndexTip (20) on XRHand!
+            var skelType = skeleton.GetSkeletonType();
+            if (skelType == OVRSkeleton.SkeletonType.XRHandLeft || skelType == OVRSkeleton.SkeletonType.XRHandRight)
+            {
+                foreach (var b in skeleton.Bones)
+                {
+                    if (b.Transform != null && (int)b.Id == 10 && !b.Transform.name.Contains("Ring"))
+                    {
+                        return b.Transform;
+                    }
+                }
+            }
+            else
+            {
+                // Legacy Oculus skeleton
+                foreach (var b in skeleton.Bones)
+                {
+                    if (b.Transform != null && b.Id == OVRSkeleton.BoneId.Hand_IndexTip && !b.Transform.name.Contains("Ring"))
+                    {
+                        return b.Transform;
+                    }
+                }
+            }
+
+            // 3. Fallback: search recursively in hierarchy
+            return FindChildStrict(skeleton.transform, "IndexTip") ??
+                   FindChildStrict(skeleton.transform, "index_tip") ??
+                   FindChildStrict(skeleton.transform, "b_index_null");
         }
 
         private SphereCollider AttachFingertipTrigger(GameObject boneObj, string colliderName)
@@ -147,13 +206,13 @@ namespace VRWatch.Interaction
             return sc;
         }
 
-        private Transform FindChildRecursive(Transform parent, string substr)
+        private Transform FindChildStrict(Transform parent, string substr)
         {
             for (int i = 0; i < parent.childCount; i++)
             {
                 var child = parent.GetChild(i);
-                if (child.name.ToLower().Contains(substr.ToLower())) return child;
-                var found = FindChildRecursive(child, substr);
+                if (IsStrictIndexTip(child) && child.name.ToLower().Contains(substr.ToLower())) return child;
+                var found = FindChildStrict(child, substr);
                 if (found != null) return found;
             }
             return null;

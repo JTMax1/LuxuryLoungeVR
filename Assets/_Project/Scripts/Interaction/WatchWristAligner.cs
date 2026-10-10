@@ -91,14 +91,54 @@ namespace VRWatch.Interaction
         {
             if (skeleton.Bones == null) return null;
 
+            // 1. Primary: Match by bone transform name containing "Wrist"
             foreach (var b in skeleton.Bones)
             {
-                if (b.Id == OVRSkeleton.BoneId.Hand_WristRoot)
+                if (b.Transform != null && b.Transform.name.IndexOf("wrist", System.StringComparison.OrdinalIgnoreCase) >= 0)
                 {
                     return b.Transform;
                 }
             }
 
+            // 2. OpenXR XRHand skeleton: bone ID 1 is XRHand_Wrist.
+            // (Note: bone ID 0 is XRHand_Palm on OpenXR skeletons, whereas Hand_WristRoot is enum value 0).
+            var skelType = skeleton.GetSkeletonType();
+            if (skelType == OVRSkeleton.SkeletonType.XRHandLeft || skelType == OVRSkeleton.SkeletonType.XRHandRight)
+            {
+                foreach (var b in skeleton.Bones)
+                {
+                    if (b.Transform != null && (int)b.Id == 1) // XRHand_Wrist
+                    {
+                        return b.Transform;
+                    }
+                }
+            }
+            else
+            {
+                // Legacy Oculus skeleton
+                foreach (var b in skeleton.Bones)
+                {
+                    if (b.Transform != null && b.Id == OVRSkeleton.BoneId.Hand_WristRoot)
+                    {
+                        return b.Transform;
+                    }
+                }
+            }
+
+            // 3. Fallback: search recursively in hierarchy
+            return FindChildRecursive(skeleton.transform, "wrist") ??
+                   FindChildRecursive(skeleton.transform, "hand_wristroot");
+        }
+
+        private Transform FindChildRecursive(Transform parent, string substr)
+        {
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                var child = parent.GetChild(i);
+                if (child.name.ToLower().Contains(substr.ToLower())) return child;
+                var found = FindChildRecursive(child, substr);
+                if (found != null) return found;
+            }
             return null;
         }
     }
